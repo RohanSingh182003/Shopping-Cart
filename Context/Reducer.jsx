@@ -9,10 +9,10 @@ const Reducer = (state,action) => {
             state.forEach(element => {
                 if(element.id == id){
                     item = element;
+                    element.qty+=1;
                 }
             });
             if(item){
-                console.log('updating')
             }
             else{        
                 return [
