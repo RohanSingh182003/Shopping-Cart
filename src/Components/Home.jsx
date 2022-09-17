@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import AppContext from '../../Context/AppContext';
 
 const Home = () => {
     const [data, setData] = useState()
@@ -8,8 +9,10 @@ const Home = () => {
         setData(b)
     }
     useEffect(() => {
-      getData();
+        getData();
     }, [])
+    const {state , dispatch} = useContext(AppContext)
+    console.log(state)
     
   return (
     <>    
@@ -28,7 +31,12 @@ const Home = () => {
                     <p className='text-gray-700 text-right mx-2 font-semibold'>${item.price}</p>
                     </div>
                     <div className='flex flex-col items-center justify-center'>
-                        <div className='p-2 bg-green-500 text-white w-full rounded-md cursor-pointer hover:bg-green-600'>
+                        <div onClick={()=>{dispatch({type:'addToCart', payload:{
+                            id:item.id,
+                            title:item.title,
+                            qty:1,
+                            price:item.price
+                        }})}} className='p-2 bg-green-500 text-white w-full rounded-md cursor-pointer hover:bg-green-600'>
                             <p className='text-center'>Add To Cart</p>
                         </div>
                     </div>
