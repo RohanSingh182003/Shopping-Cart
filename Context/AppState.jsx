@@ -4,7 +4,10 @@ import Reducer from './Reducer'
 
 const AppState = (props) => {
     const reducer = Reducer;
-    let initialState = []
+    let initialState = {
+      cart: [],
+      subTotal : 0
+    }
     const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <AppContext.Provider value={{state , dispatch}}>

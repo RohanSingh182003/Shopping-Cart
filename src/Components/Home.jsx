@@ -11,13 +11,13 @@ const Home = () => {
     useEffect(() => {
         getData();
     }, [])
-    const {state , dispatch} = useContext(AppContext)
-    console.log(state)
+    const {dispatch} = useContext(AppContext)
     
   return (
     <>    
+    
     <p className='text-center py-2 text-2xl text-violet-800 lg:ml-56'>Shop Latest Items</p>
-    <div className='flex flex-wrap justify-evenly pb-6 h-[82vh] overflow-y-scroll lg:ml-56 lg:px-6 scrollbar-hide'>
+    <div className='flex flex-wrap justify-evenly pb-6 h-[80vh] overflow-y-scroll lg:ml-56 lg:px-6 scrollbar-hide'>
         {data && data.map((item)=>{
             return (
                 <div className='w-48 border p-2 my-4 rounded-md'>
@@ -34,8 +34,8 @@ const Home = () => {
                         <div onClick={()=>{dispatch({type:'addToCart', payload:{
                             id:item.id,
                             title:item.title,
-                            qty:1,
-                            price:item.price
+                            price:item.price,
+                            img: item.image
                         }})}} className='p-2 bg-green-500 text-white w-full rounded-md cursor-pointer hover:bg-green-600'>
                             <p className='text-center'>Add To Cart</p>
                         </div>
