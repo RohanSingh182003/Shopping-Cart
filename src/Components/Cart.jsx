@@ -1,17 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import AppContext from "../../Context/AppContext";
+import { MdDeleteForever } from 'react-icons/md';
 
 const Cart = () => {
   const { state, dispatch } = useContext(AppContext);
   const [product, setProduct] = useState([])
   const [key, setKey] = useState(null)
 
+  const renderItem = () => {
+    setKey(Math.random())
+  }
+
   const addToCart = (id , title , price , image) => {
     dispatch({
       type: "addToCart",
       payload: {id , title , price , image},
     });
-    setKey(Math.random())
+    renderItem();
   }
 
   const removefromCart = (id) => {
@@ -19,7 +24,7 @@ const Cart = () => {
       type:"removeItemFromCart",
       payload:{id}
     })
-    setKey(Math.random())
+    renderItem();
   }
 
   const clearFromCart = (id) => {
@@ -27,9 +32,15 @@ const Cart = () => {
       type:"clearItemFromCart",
       payload:{id}
     })
-    setKey(Math.random())
+    renderItem();
   }
 
+  const clearCart = () => {
+    dispatch({
+      type: "clearCart",
+    })
+    renderItem();
+  }
 
   useEffect(() => {
     setProduct(state.cart)
@@ -40,7 +51,8 @@ const Cart = () => {
     <div className="flex flex-col lg:pl-56">
       <p className="text-3xl text-center border-b py-2 text-violet-800">Cart</p>
       <div className="h-[80vh] overflow-y-scroll scrollbar-hide">
-        {product.length > 0 ? product.map((item) => {
+        {product.length > 0 ? 
+        product.map((item) => {
           return (
             <div key={item.id} className="w-full p-2 lg:px-12 border flex flex-col md:flex-row items-center my-2 rounded-md">
               <div className="w-64 h-52 grid place-items-center">
@@ -71,8 +83,7 @@ const Cart = () => {
                   Remove
                 </button>
               </div>
-            </div>
-          );
+            </div> );
         }) :
         <div className="w-full h-full grid place-items-center">
           <div className="text-center">
@@ -81,6 +92,10 @@ const Cart = () => {
         </div>
         </div>
         }
+        {product.length > 0 && <div className="py-6 flex px-10 justify-between border-t mt-4">
+          <p className="text-xl text-green-600 font-bold">${state.subTotal}</p>
+          <MdDeleteForever onClick={clearCart} className="text-2xl text-red-600 cursor-pointer"/>
+          </div>}
       </div>
     </div>
   );

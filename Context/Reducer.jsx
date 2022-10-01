@@ -1,14 +1,24 @@
 const Reducer = (state, action) => {
+
+  // calculates subtotal
+  const subTotal = (state) => {
+    let subt = 0;
+      state.forEach(ele => {
+        subt = subt + (ele.price * ele.qty);
+      });
+      console.log(subt);
+      return subt;
+  }
+
   switch (action.type) {
 
     case "addToCart":
       let prod = state.cart.find((e) => e.id === action.payload.id);
-      console.log(subt);
       if (prod) {
         prod.qty += 1;
         return {
           cart: [...state.cart],
-          subTotal: 0
+          subTotal: subTotal(state.cart)
         };
       }
       let id = action.payload.id;
@@ -19,21 +29,23 @@ const Reducer = (state, action) => {
       let item = { id, price, qty, title, image };
       return {
         cart: [...state.cart , item],
-        subTotal: 0,
+        subTotal: state.subTotal + price,
       };
-
 
       case "removeItemFromCart":
         let remove_prod = state.cart.find((e) => e.id === action.payload.id);
         if (remove_prod.qty>1) {
           remove_prod.qty -= 1;
-          return state;
+          return {
+            cart: [...state.cart],
+            subTotal: subTotal(state.cart), 
+          };
         }
         else{
           let del_prod = state.cart.filter((e)=> e.id != action.payload.id)
           return {
             cart: del_prod,
-            subTotal: 0,
+            subTotal: subTotal(state.cart),
           };
         }
 
@@ -41,8 +53,14 @@ const Reducer = (state, action) => {
             let clear_prod = state.cart.filter((e)=> e.id != action.payload.id)
             return {
               cart: clear_prod,
-              subTotal: 0,
+              subTotal: subTotal(state.cart),
             };
+
+        case "clearCart":
+          return {
+            cart: [],
+            subTotal: 0
+          }
 
     default:
       break;
