@@ -6,7 +6,6 @@ const Reducer = (state, action) => {
       state.forEach(ele => {
         subt = subt + (ele.price * ele.qty);
       });
-      console.log(subt);
       return subt;
   }
 
@@ -45,7 +44,7 @@ const Reducer = (state, action) => {
           let del_prod = state.cart.filter((e)=> e.id != action.payload.id)
           return {
             cart: del_prod,
-            subTotal: subTotal(state.cart),
+            subTotal: subTotal(del_prod),
           };
         }
 
@@ -53,7 +52,7 @@ const Reducer = (state, action) => {
             let clear_prod = state.cart.filter((e)=> e.id != action.payload.id)
             return {
               cart: clear_prod,
-              subTotal: subTotal(state.cart),
+              subTotal: subTotal(clear_prod),
             };
 
         case "clearCart":
