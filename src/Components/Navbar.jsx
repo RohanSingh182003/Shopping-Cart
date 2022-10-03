@@ -18,7 +18,7 @@ const Navbar = () => {
             ref.current.classList.add('-translate-x-full')
         }
     }
-    const props = useContext(AppContext)
+    const {state , dispatch} = useContext(AppContext)
   return (
     <div className='relative px-2 flex justify-between lg:justify-around items-center border-b h-[10vh]'>
         <div onClick={toggleSidebar} className='lg:hidden'>
@@ -29,7 +29,7 @@ const Navbar = () => {
         <Link to='/cart'><div className='border-2 p-1 rounded-full border-violet-500 mx-2 relative'>
             <AiOutlineShoppingCart className='text-2xl text-violet-500 cursor-pointer'/>
             <div className='absolute w-4 text-center bg-green-500 rounded-full text-xs -top-1 -right-1'>
-            {props.state.cart.length>0 && <a className='text-xs text-white font-semibold '>{props.state.cart.length}</a>}
+            {state.cart.length>0 && <p className='text-xs text-white font-semibold '>{state.cart.length}</p>}
             </div>
         </div>
         </Link>

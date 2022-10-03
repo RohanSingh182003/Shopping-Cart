@@ -8,9 +8,11 @@ const Home = () => {
         let b = await a.json();
         setData(b)
     }
+    // load initial data
     useEffect(() => {
         getData();
     }, [])
+    
     const {state , dispatch} = useContext(AppContext)
     
   return (

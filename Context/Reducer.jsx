@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Reducer = (state, action) => {
   // calculates subtotal
   const subTotal = (state) => {
@@ -14,7 +16,6 @@ const Reducer = (state, action) => {
       if (prod) {
         prod.qty += 1;
         return {
-          products: state.products,
           cart: [...state.cart],
           subTotal: subTotal(state.cart),
         };
@@ -26,7 +27,6 @@ const Reducer = (state, action) => {
       let title = action.payload.title;
       let item = { id, price, qty, title, image };
       return {
-        products: state.products,
         cart: [...state.cart, item],
         subTotal: state.subTotal + price,
       };
@@ -36,14 +36,12 @@ const Reducer = (state, action) => {
       if (remove_prod.qty > 1) {
         remove_prod.qty -= 1;
         return {
-          products: state.products,
           cart: [...state.cart],
           subTotal: subTotal(state.cart),
         };
       } else {
         let del_prod = state.cart.filter((e) => e.id != action.payload.id);
         return {
-          products: state.products,
           cart: del_prod,
           subTotal: subTotal(del_prod),
         };
@@ -52,14 +50,12 @@ const Reducer = (state, action) => {
     case "clearItemFromCart":
       let clear_prod = state.cart.filter((e) => e.id != action.payload.id);
       return {
-        products: state.products,
         cart: clear_prod,
         subTotal: subTotal(clear_prod),
       };
 
     case "clearCart":
       return {
-        products: state.products,
         cart: [],
         subTotal: 0,
       };
