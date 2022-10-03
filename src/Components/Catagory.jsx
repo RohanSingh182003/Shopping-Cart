@@ -1,24 +1,26 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
-import AppContext from '../../Context/AppContext';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 import Card from './Card';
 
-const Home = () => {
+const Catagory = () => {
     const [data, setData] = useState()
+    let prod = useParams()
     const getData = async () => {
         let a = await axios.get('https://fakestoreapi.com/products');
         let b = await a.data;
-        setData(b)
+        let newarr = await b.filter((e) => e.category === prod.category)
+        setData(newarr)
     }
     // load initial data
     useEffect(() => {
         getData();
-    }, [])
+    }, [prod.category])
     
   return (
     <>    
     
-    <p className='text-center py-3 text-2xl text-violet-800'>Shop Latest Items</p>
+    <p className='text-center py-3 text-2xl text-violet-800'>Category : <span className='font-semibold capitalize'> {prod.category}</span></p>
     <div className='flex flex-wrap justify-evenly md:mx-16 lg:px-6'>
         {data && data.map((item)=>{
             return (        
@@ -30,4 +32,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Catagory

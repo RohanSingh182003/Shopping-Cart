@@ -48,9 +48,9 @@ const Cart = () => {
 
 
   return (
-    <div className="flex flex-col lg:pl-56">
+    <div className="flex flex-col lg:px-36">
       <p className="text-3xl text-center border-b py-2 text-violet-800">Cart</p>
-      <div className="h-[80vh] overflow-y-scroll scrollbar-hide">
+      <div>
         {product.length > 0 ? 
         product.map((item) => {
           return (
@@ -85,14 +85,14 @@ const Cart = () => {
               </div>
             </div> );
         }) :
-        <div className="w-full h-[60vh] md:h-full grid place-items-center">
+        <div className="w-full h-96 grid place-items-center">
           <div className="text-center">
         <h2 className="text-3xl font-semibold text-violet-700">Cart Empty</h2>
         <p className="my-3 text-violet-500">Shop Now , We have best products for you with attractive offers!</p>
         </div>
         </div>
         }
-        {product.length > 0 && <div className="py-6 flex px-10 justify-between border-t mt-4">
+        {product.length > 0 && <div className="py-6 flex px-10 justify-between border-t mt-4 sticky bottom-0 bg-white">
           <p className="text-xl text-green-600 font-bold"><span className="text-violet-700"> Total Price : </span>${Math.floor(state.subTotal)}</p>
           <MdDeleteForever onClick={clearCart} className="text-2xl text-red-600 cursor-pointer"/>
           </div>}

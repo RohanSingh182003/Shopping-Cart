@@ -7,6 +7,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Catagory from "./Components/Catagory";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <Routes>
     <Route path="/" element={<Home />}/>
     <Route path="/cart" element={<Cart />}/>
+    <Route path="/:category" element={<Catagory />}/>
     </Routes>
     </AppState>
     </BrowserRouter>
