@@ -14,7 +14,7 @@ const Card = ({props}) => {
                     <div className='h-24 overflow-hidden'>
                     <p className='text-lg text-center border-t'>{title.slice(0,14)+'...'}</p>
                     <p className='text-sm text-gray-600 text-center'>{description.slice(0,30)+'...'}</p>
-                    <p className='text-gray-700 text-right mx-2 font-semibold'>${price}</p>
+                    <p className='text-right mx-2 font-semibold text-green-600'>${price}</p>
                     </div>
                     <div className='flex flex-col items-center justify-center'>
                         <button onClick={()=>{dispatch({type:'addToCart', payload:{
@@ -22,7 +22,7 @@ const Card = ({props}) => {
                             title:title,
                             price:price,
                             img: image
-                        }})}} className='p-2 bg-green-500 text-white w-full rounded-md hover:bg-green-600'>
+                        }})}} className='p-2 bg-violet-500 text-white w-full rounded-md hover:bg-violet-600'>
                             Add To Cart
                         </button>
                     </div>

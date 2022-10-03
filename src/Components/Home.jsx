@@ -19,13 +19,17 @@ const Home = () => {
     <>    
     
     <p className='text-center py-3 text-2xl text-violet-800'>Shop Latest Items</p>
-    <div className='flex flex-wrap justify-evenly md:mx-16 lg:px-6'>
-        {data && data.map((item)=>{
+   {data? <div className='flex flex-wrap justify-evenly md:mx-16 lg:px-6'>
+        {data.map((item)=>{
             return (        
                 <Card props={{id: item.id , title: item.title , description: item.description , price: item.price , image: item.image}}/>
             )
         })}
-    </div>
+    </div>: 
+    <div className="h-96 w-full flex flex-col justify-center items-center">
+            <p className="text-2xl text-violet-600 font-semibold">Products are loading!</p>
+            <p className="text-xs my-2 text-violet-400">Please wait , we are thankful for your patience.</p>
+        </div>}
     </>
   )
 }
