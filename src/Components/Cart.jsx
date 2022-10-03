@@ -6,7 +6,6 @@ const Cart = () => {
   const { state, dispatch } = useContext(AppContext);
   const [product, setProduct] = useState([])
   const [key, setKey] = useState(null)
-  const [subTotal, setSubTotal] = useState(0)
 
   const renderItem = () => {
     setKey(Math.random())
@@ -45,7 +44,6 @@ const Cart = () => {
 
   useEffect(() => {
     setProduct(state.cart)
-    setSubTotal(state.subTotal)
   }, [key])
 
 
@@ -95,7 +93,7 @@ const Cart = () => {
         </div>
         }
         {product.length > 0 && <div className="py-6 flex px-10 justify-between border-t mt-4">
-          <p className="text-xl text-green-600 font-bold"><span className="text-violet-700"> Total Price : </span>${Math.floor(subTotal)}</p>
+          <p className="text-xl text-green-600 font-bold"><span className="text-violet-700"> Total Price : </span>${Math.floor(state.subTotal)}</p>
           <MdDeleteForever onClick={clearCart} className="text-2xl text-red-600 cursor-pointer"/>
           </div>}
       </div>

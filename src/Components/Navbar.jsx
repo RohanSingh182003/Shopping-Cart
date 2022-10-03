@@ -34,8 +34,43 @@ const Navbar = () => {
         </div>
         </Link>
         {/* sidebar options */}
-        <div ref={ref} className='absolute h-[100vh] lg:h-[90vh] w-56 bg-violet-500 top-0 lg:top-16 text-white left-0 transform transition-transform -translate-x-full lg:translate-x-0 z-10'>
+        <div ref={ref} className='absolute h-[100vh] lg:h-[90vh] w-56 bg-violet-500 top-0 lg:top-16 text-white left-0 transform transition-transform -translate-x-full lg:translate-x-0 z-10 flex flex-col items-center'>
             <ImCross onClick={toggleSidebar} className='text-xl text-white absolute right-4 top-6 cursor-pointer lg:hidden'/>
+            
+<h3 className="mb-4 font-semibold text-gray-900 dark:text-white text-3xl mt-14">Catagory</h3>
+<ul className="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg border border-violet-200 dark:bg-violet-700 dark:border-violet-600 dark:text-white mt-8">
+    <li className="w-full rounded-t-lg border-b border-violet-200 dark:border-violet-600">
+        <div className="flex items-center pl-3">
+            <input id="list-radio-license" type="radio" name="list-radio" className="w-4 h-4 text-purple-600 bg-violet-100 border-violet-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-violet-600 dark:border-violet-500"/>
+            <label htmlFor="list-radio-license" className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">All Products</label>
+        </div>
+    </li>
+    <li className="w-full rounded-t-lg border-b border-violet-200 dark:border-violet-600">
+        <div className="flex items-center pl-3">
+            <input id="list-radio-id" type="radio" name="list-radio" className="w-4 h-4 text-purple-600 bg-violet-100 border-violet-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-violet-600 dark:border-violet-500"/>
+            <label htmlFor="list-radio-id" className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Men's Clothing</label>
+        </div>
+    </li>   
+    <li className="w-full rounded-t-lg border-b border-violet-200 dark:border-violet-600">
+        <div className="flex items-center pl-3">
+            <input id="list-radio-id-2" type="radio" name="list-radio" className="w-4 h-4 text-purple-600 bg-violet-100 border-violet-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-violet-600 dark:border-violet-500"/>
+            <label htmlFor="list-radio-id-2" className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Jewelery</label>
+        </div>
+    </li>
+    <li className="w-full rounded-t-lg border-b border-violet-200 dark:border-violet-600">
+        <div className="flex items-center pl-3">
+            <input id="list-radio-millitary" type="radio" name="list-radio" className="w-4 h-4 text-purple-600 bg-violet-100 border-violet-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-violet-600 dark:border-violet-500"/>
+            <label htmlFor="list-radio-millitary" className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Electronics</label>
+        </div>
+    </li>
+    <li className="w-full rounded-t-lg border-b border-violet-200 dark:border-violet-600">
+        <div className="flex items-center pl-3">
+            <input id="list-radio-passport" type="radio" name="list-radio" className="w-4 h-4 text-purple-600 bg-violet-100 border-violet-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-violet-600 dark:border-violet-500"/>
+            <label htmlFor="list-radio-passport" className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Women's Clothing</label>
+        </div>
+    </li>
+</ul>
+
         </div>
     </div>
   )

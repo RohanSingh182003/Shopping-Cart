@@ -11,7 +11,7 @@ const Home = () => {
     useEffect(() => {
         getData();
     }, [])
-    const {dispatch} = useContext(AppContext)
+    const {state , dispatch} = useContext(AppContext)
     
   return (
     <>    
