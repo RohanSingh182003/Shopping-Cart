@@ -9,6 +9,7 @@ const Cart = () => {
 
   const renderItem = () => {
     setKey(Math.random())
+
   }
 
   const addToCart = (id , title , price , image) => {
@@ -85,7 +86,7 @@ const Cart = () => {
               </div>
             </div> );
         }) :
-        <div className="w-full h-96 grid place-items-center">
+        <div className="w-full h-80 md:h-96 grid place-items-center">
           <div className="text-center">
         <h2 className="text-3xl font-semibold text-violet-700">Cart Empty</h2>
         <p className="my-3 text-violet-500">Shop Now , We have best products for you with attractive offers!</p>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import LoadingBar from 'react-top-loading-bar'
 import AppState from "../Context/AppState";
 import Home from "./Components/Home";
@@ -9,16 +9,25 @@ import Catagory from "./Components/Catagory";
 import Footer from "./Components/Footer";
 
 function App() {
-  const ref = useRef(null)
+  const loadProgress = (progress) => {
+    setProgress(progress)
+  }
+  const [progress, setProgress] = useState(0)
   return (
     <BrowserRouter>
       <AppState>
-      <LoadingBar color='violet' ref={ref} />
+      <LoadingBar
+        color='purple'
+        progress={progress}
+        height={2}
+        transitionTime={100}
+        loaderSpeed={300}
+      />
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home data={loadProgress} />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/:category" element={<Catagory />} />
+          <Route path="/:category" element={<Catagory data={loadProgress} />} />
         </Routes>
         <Footer />
       </AppState>
