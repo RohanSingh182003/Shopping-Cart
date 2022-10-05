@@ -4,6 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -44,7 +45,11 @@ const Navbar = () => {
       </div>
       {toggle && (
         <div className="bg-white">
-          <ul className="w-full h-[90vh] md:h-auto flex flex-col md:flex-row justify-evenly items-center border py-2 text-violet-500">
+          <div className="flex items-center w-full justify-evenly">
+          <Search/>
+          <button>Login/Logout</button>
+          </div>
+          <ul className="w-full h-[65vh] md:h-auto flex flex-col md:flex-row justify-evenly items-center border py-2 text-violet-500">
             <Link
               onClick={() => setToggle(false)}
               to={"/"}

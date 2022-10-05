@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from "./Card";
+import Loading from "./Loading";
 
 const Catagory = (props) => {
   const [data, setData] = useState();
@@ -42,10 +43,7 @@ const Catagory = (props) => {
           })}
         </div>
       ) : (
-        <div className="h-80 md:h-96 w-full flex flex-col justify-center items-center">
-            <p className="text-2xl text-violet-600 font-semibold">Products are loading!</p>
-            <p className="text-xs my-2 text-violet-400">Please wait , we are thankful for your patience.</p>
-        </div>
+        <Loading/>
       )}
     </>
   );
