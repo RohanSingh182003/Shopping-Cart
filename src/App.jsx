@@ -7,6 +7,7 @@ import Cart from "./Components/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Catagory from "./Components/Catagory";
 import Footer from "./Components/Footer";
+import Product from './Components/Product';
 
 function App() {
   const loadProgress = (progress) => {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Home data={loadProgress} />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/:category" element={<Catagory data={loadProgress} />} />
+          <Route path="/product/:id" element={<Product data={loadProgress} />} />
         </Routes>
         <Footer />
       </AppState>

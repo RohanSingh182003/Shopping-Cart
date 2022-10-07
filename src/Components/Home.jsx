@@ -3,7 +3,7 @@ import React, {useEffect, useState } from 'react'
 import Card from './Card';
 import Loading from './Loading';
 
-const Home = (props) => {
+const AllProducts = (props) => {
     // let {loadProgress} = props;
     const [data, setData] = useState()
     const getData = async () => {
@@ -35,4 +35,4 @@ const Home = (props) => {
   )
 }
 
-export default Home
+export default AllProducts

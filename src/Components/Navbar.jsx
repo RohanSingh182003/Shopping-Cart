@@ -3,6 +3,7 @@ import AppContext from "../../Context/AppContext";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
+import { BiUserCircle } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import Search from "./Search";
 
@@ -11,7 +12,7 @@ const Navbar = () => {
   const { state, dispatch } = useContext(AppContext);
   return (
     <div className="sticky top-0 bg-white">
-      <div className="px-2 flex justify-between lg:justify-around items-center  h-[10vh] border-b">
+      <div className="px-2 flex justify-between lg:justify-around items-center h-16  border-b">
         {toggle ? (
           <ImCross
             onClick={() => setToggle(!toggle)}
@@ -47,15 +48,15 @@ const Navbar = () => {
         <div className="bg-white">
           <div className="flex items-center w-full justify-evenly">
           <Search/>
-          <button>Login/Logout</button>
+          <BiUserCircle className="text-3xl font-semibold text-violet-500"/>
           </div>
-          <ul className="w-full h-[65vh] md:h-auto flex flex-col md:flex-row justify-evenly items-center border py-2 text-violet-500">
+          <ul className="w-full h-[82.5vh] md:h-auto flex flex-col md:flex-row justify-evenly items-center border py-2 text-violet-500">
             <Link
               onClick={() => setToggle(false)}
               to={"/"}
               className="hover:text-violet-700 cursor-pointer text-xl font-semibold md:text-sm lg:text-lg"
             >
-              Home
+              All Products
             </Link>
             <Link
               onClick={() => setToggle(false)}

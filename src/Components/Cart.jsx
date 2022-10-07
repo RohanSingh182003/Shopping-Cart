@@ -67,15 +67,15 @@ const Cart = () => {
                 <div className="flex w-32 items-center justify-between text-xl my-2">
                   <button
                     onClick={() => addToCart(item.id , item.title , item.price , item.image)}
-                    className="w-7 fony-bold bg-green-500 text-white cursor-pointer rounded-full hover:bg-green-600"
+                    className="w-7 font-bold text-green-500 cursor-pointer"
                   >
-                    +
+                    <p className="text-2xl"> + </p>
                   </button>
                   <p className="">{item.qty}</p>
                   <button
                   onClick={()=> removefromCart(item.id)}
-                  className="w-7 fony-bold bg-red-500 text-white cursor-pointer rounded-full hover:bg-red-600">
-                    -
+                  className="w-7 font-bold text-red-500 cursor-pointer">
+                     <p className="text-2xl"> - </p>
                   </button>
                 </div>
                 <button

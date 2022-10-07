@@ -6,8 +6,8 @@ const Card = ({props}) => {
       
     const {state , dispatch} = useContext(AppContext)
   return (
-    <div key={id} className='w-full md:w-48 border p-2 my-4 rounded-md'>
-                    <div className='w-full md:w-48 h-44 flex justify-center py-2'>
+    <div key={id} className='w-48 border p-2 my-4 rounded-md overflow-x-hidden'>
+                    <div className='w-48 h-44 flex justify-center py-2'>
                     <img src={image} className="h-full" />
                     </div>
                     <div className='flex flex-col'>
