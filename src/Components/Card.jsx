@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import AppContext from '../../Context/AppContext';
+import { BsCartCheckFill } from "react-icons/bs";
+
 
 const Card = ({props}) => {
     let {image , price , description , title , id} = props;
@@ -16,15 +18,16 @@ const Card = ({props}) => {
                     <p className='text-sm text-gray-600 text-center'>{description.slice(0,30)+'...'}</p>
                     <p className='text-right mx-2 font-semibold text-green-600'>${price}</p>
                     </div>
-                    <div className='flex flex-col items-center justify-center'>
-                        <button onClick={()=>{dispatch({type:'addToCart', payload:{
+                    <div className='flex items-center justify-center'>
+                        <button className='p-2 bg-violet-500 text-white w-full rounded-md hover:bg-violet-600'>
+                            Buy Now
+                        </button>
+                        <BsCartCheckFill onClick={()=>{dispatch({type:'addToCart', payload:{
                             id:id,
                             title:title,
                             price:price,
                             img: image
-                        }})}} className='p-2 bg-violet-500 text-white w-full rounded-md hover:bg-violet-600'>
-                            Add To Cart
-                        </button>
+                        }})}} className='text-4xl text-violet-500 mx-2'/>
                     </div>
                     </div>
                 </div>

@@ -2,31 +2,33 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Product = () => {
+const Product = (props) => {
   const [data, setData] = useState({});
+  let {id} = useParams();
 
-  const getData = async () => {
-    let props = useParams();
-    let id = props.id;
+  const getData = async (id) => {
+    props.data(30)
     let res = await axios.get(`https://fakestoreapi.com/products/${id}`);
     setData(res.data);
+    props.data(100)
   };
-
+  
   useEffect(() => {
-    getData();
-    console.log(data);
+    getData(id);
   }, []);
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-8 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
+          <div className="lg:w-1/3 w-full lg:h-96 h-64">
           <img
             alt="ecommerce"
-            className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+            className="object-cover object-center h-full rounded"
             src={data.image}
           />
-          <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          </div>
+          <div className="lg:w-2/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
               {data.category}
             </h2>
