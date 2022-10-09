@@ -1,18 +1,24 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import AppContext from "../../Context/AppContext";
+import Check_Servicebility from "./Check_Servicebility";
 
 const Product = (props) => {
+  const { state, dispatch } = useContext(AppContext);
   const [data, setData] = useState({});
-  let {id} = useParams();
+  let { id } = useParams();
 
   const getData = async (id) => {
-    props.data(30)
-    let res = await axios.get(`https://fakestoreapi.com/products/${id}`);
-    setData(res.data);
-    props.data(100)
+    props.data(30);
+    let res = await axios.get(
+      "https://rohansingh182003.github.io/JSON-files-for-rapid-development/store_api.json"
+    );
+    let prod = res.data.filter((item) => item.id === Number.parseInt(id));
+    setData(prod[0]);
+    props.data(100);
   };
-  
+
   useEffect(() => {
     getData(id);
   }, []);
@@ -20,15 +26,15 @@ const Product = (props) => {
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-8 mx-auto">
-        <div className="lg:w-4/5 mx-auto flex flex-wrap">
-          <div className="lg:w-1/3 w-full lg:h-96 h-64">
-          <img
-            alt="ecommerce"
-            className="object-cover object-center h-full rounded"
-            src={data.image}
-          />
+        <div className="lg:w-full mx-auto flex flex-wrap">
+          <div className="lg:w-1/2 w-full lg:h-96 h-64 grid place-items-center">
+            <img
+              alt="ecommerce"
+              className="object-cover object-center h-full rounded"
+              src={data.image}
+            />
           </div>
-          <div className="lg:w-2/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
               {data.category}
             </h2>
@@ -133,9 +139,7 @@ const Product = (props) => {
                 </a>
               </span>
             </div>
-            <p className="leading-relaxed">
-              {data.description}
-            </p>
+            <p className="leading-relaxed">{data.description}</p>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
               <div className="flex">
                 <span className="mr-3">Color</span>
@@ -168,16 +172,32 @@ const Product = (props) => {
                 </div>
               </div>
             </div>
-            <div className="flex">
-              <span className="title-font font-medium text-2xl text-gray-900">
-                ${data.price}
+            <Check_Servicebility/>
+            <div className="flex flex-wrap justify-between">
+              <span className="title-font font-medium text-2xl text-green-700">
+                ₹ {data.price}
               </span>
-              <button className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded">
-                Add To cart
-              </button>
-              <button className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded">
-                Buy Now
-              </button>
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => {
+                    dispatch({
+                      type: "addToCart",
+                      payload: {
+                        id: data.id,
+                        title: data.title,
+                        price: data.price,
+                        img: data.image,
+                      },
+                    });
+                  }}
+                  className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded"
+                >
+                  Add To cart
+                </button>
+                <button className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded">
+                  Buy Now
+                </button>
+              </div>
             </div>
           </div>
         </div>

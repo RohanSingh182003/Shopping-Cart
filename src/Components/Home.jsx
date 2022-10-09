@@ -8,7 +8,7 @@ const AllProducts = (props) => {
     const [data, setData] = useState()
     const getData = async () => {
         props.data(20)
-        let a = await axios.get('https://fakestoreapi.com/products');
+        let a = await axios.get('https://rohansingh182003.github.io/JSON-files-for-rapid-development/store_api.json');
         let b = await a.data;
         setData(b)
         props.data(100)
@@ -26,7 +26,7 @@ const AllProducts = (props) => {
    {data? <div className='flex flex-wrap justify-evenly md:mx-16 lg:px-6'>
         {data.map((item)=>{
             return (        
-                <Card props={{id: item.id , title: item.title , description: item.description , price: item.price , image: item.image}}/>
+                <Card props={{id: item.id , title: item.title, price: item.price , image: item.image}}/>
             )
         })}
     </div>: 

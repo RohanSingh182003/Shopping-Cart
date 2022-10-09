@@ -9,7 +9,7 @@ const Catagory = (props) => {
   let prod = useParams();
   const getData = async () => {
     props.data(20)
-    let a = await axios.get("https://fakestoreapi.com/products");
+    let a = await axios.get("https://rohansingh182003.github.io/JSON-files-for-rapid-development/store_api.json");
     let b = await a.data;
     let newarr = await b.filter((e) => e.category === prod.category);
     setData(newarr);

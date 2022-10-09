@@ -63,7 +63,7 @@ const Cart = () => {
                 <div className="grid place-items-center w-full">
                   <p className="text-xl px-3">{item.title}</p>
                   <p className="my-1 text-xl text-green-600 font-bold">
-                    ${item.price}
+                  ₹ {item.price}
                   </p>
                   <div className="flex w-32 items-center justify-between text-xl my-2">
                     <button
@@ -107,8 +107,8 @@ const Cart = () => {
         {product.length > 0 && (
           <div className="py-6 flex px-10 justify-between items-center border-t mt-4 sticky bottom-0 bg-white">
             <p className="text-xl text-green-600 font-bold">
-              <span className="text-violet-700"> Total Price : </span>$
-              {Math.floor(state.subTotal)}
+              <span className="text-violet-700"> Total Price : </span><span>₹{" "}
+              {Math.floor(state.subTotal)}</span> 
             </p>
             <div className="flex w-40 justify-between items-center">
               <button className="p-2 w-fit bg-violet-500 text-white rounded-md hover:bg-violet-600">Checkout</button>
