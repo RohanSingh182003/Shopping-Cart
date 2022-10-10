@@ -7,6 +7,8 @@ import Check_Servicebility from "./Check_Servicebility";
 const Product = (props) => {
   const { state, dispatch } = useContext(AppContext);
   const [data, setData] = useState({});
+  const [color, setColor] = useState(null);
+  const [size, setSize] = useState(null);
   let { id } = useParams();
 
   const getData = async (id) => {
@@ -42,6 +44,7 @@ const Product = (props) => {
               {data.title}
             </h1>
             <div className="flex mb-4">
+              {/* rateing */}
               <span className="flex items-center">
                 <svg
                   fill="currentColor"
@@ -103,31 +106,60 @@ const Product = (props) => {
             </div>
             <p className="leading-relaxed">{data.description}</p>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-            {data.color?.length>0 && <div className="flex">
-                {data.color && <span className="mr-3">Color</span>}
-                {data.color && data.color.map((item)=>{return <button style={{backgroundColor: item}} className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>})}
-              </div>}
-              {data.size?.length>0 &&<div className="flex ml-6 items-center">
-              {data.size && <span className="mr-3">Size</span>}
-                {data.size && <div className="relative">
-                  <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500 text-base pl-3 pr-10">
-                    {data.size.map((item)=>{return <option>{item}</option>})}
-                  </select>
-                  <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                    <svg
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="w-4 h-4"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M6 9l6 6 6-6"></path>
-                    </svg>
-                  </span>
-                </div>}
-              </div>}
+              {data.color?.length > 0 && (
+                <div className="flex">
+                  {data.color && <span className="mr-3">Color</span>}
+                  {data.color &&
+                    data.color.map((item) => {
+                      return (
+                        <button
+                          key={item}
+                          onClick={() => {
+                            setColor(item);
+                          }}
+                          style={{ backgroundColor: item }}
+                          className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none focus:ring-purple-200 focus:border-purple-500 "
+                        ></button>
+                      );
+                    })}
+                </div>
+              )}
+              {data.size?.length > 0 && (
+                <div className="flex ml-6 items-center">
+                  {data.size && <span className="mr-3">Size</span>}
+                  {data.size && (
+                    <div className="relative">
+                      <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500 text-base pl-3 pr-10">
+                        {data.size.map((item) => {
+                          return (
+                            <option
+                              key={item}
+                              onClick={() => {
+                                setSize(item);
+                              }}
+                            >
+                              {item}
+                            </option>
+                          );
+                        })}
+                      </select>
+                      <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                        <svg
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          className="w-4 h-4"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M6 9l6 6 6-6"></path>
+                        </svg>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
             <Check_Servicebility />
             <div className="flex flex-wrap justify-between">
@@ -144,6 +176,8 @@ const Product = (props) => {
                         title: data.title,
                         price: data.price,
                         img: data.image,
+                        color: color === null ? null : color,
+                        size: size === null ? null : size,
                       },
                     });
                   }}
@@ -152,18 +186,20 @@ const Product = (props) => {
                   Add To cart
                 </button>
                 <Link
-                onClick={()=>{
-                  dispatch({type:'clearCart'});
-                  dispatch({
-                    type: "addToCart",
-                    payload: {
-                      id: data.id,
-                      title: data.title,
-                      price: data.price,
-                      img: data.image,
-                    },
-                  });
-                }}
+                  onClick={() => {
+                    dispatch({ type: "clearCart" });
+                    dispatch({
+                      type: "addToCart",
+                      payload: {
+                        id: data.id,
+                        title: data.title,
+                        price: data.price,
+                        img: data.image,
+                        color: color === null ? null : color,
+                        size: size === null ? null : size,
+                      },
+                    });
+                  }}
                   to={"/checkout"}
                   className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded"
                 >

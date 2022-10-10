@@ -12,10 +12,10 @@ const Cart = () => {
     setKey(Math.random());
   };
 
-  const addToCart = (id, title, price, image) => {
+  const addToCart = (id, title, price, image, color, size) => {
     dispatch({
       type: "addToCart",
-      payload: { id, title, price, image },
+      payload: { id, title, price, image, color, size },
     });
     renderItem();
   };
@@ -66,6 +66,17 @@ const Cart = () => {
                   <p className="my-1 text-xl text-green-600 font-bold">
                     ₹ {item.price}
                   </p>
+                  <div className="w-24 flex justify-between">
+                    {item.color !=  null && (
+                      <button
+                        style={{ backgroundColor: item.color }}
+                        className="w-6 h-6 rounded-full border-2"
+                      ></button>
+                    )}
+                    {item.size != null && (
+                      <p className="text-xl text-gray-800">{item.size}</p>
+                    )}
+                  </div>
                   <div className="flex w-32 items-center justify-between text-xl my-2">
                     <button
                       onClick={() =>

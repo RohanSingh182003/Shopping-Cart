@@ -1,4 +1,3 @@
-import axios from "axios";
 
 const Reducer = (state, action) => {
   // calculates subtotal
@@ -25,7 +24,9 @@ const Reducer = (state, action) => {
       let image = action.payload.img;
       let qty = 1;
       let title = action.payload.title;
-      let item = { id, price, qty, title, image };
+      let color = action.payload.color;
+      let size = action.payload.size;
+      let item = { id, price, qty, title, image , color , size };
       return {
         cart: [...state.cart, item],
         subTotal: state.subTotal + price,
