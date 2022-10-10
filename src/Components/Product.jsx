@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AppContext from "../../Context/AppContext";
 import Check_Servicebility from "./Check_Servicebility";
 
@@ -172,7 +172,7 @@ const Product = (props) => {
                 </div>
               </div>
             </div>
-            <Check_Servicebility/>
+            <Check_Servicebility />
             <div className="flex flex-wrap justify-between">
               <span className="title-font font-medium text-2xl text-green-700">
                 ₹ {data.price}
@@ -194,9 +194,24 @@ const Product = (props) => {
                 >
                   Add To cart
                 </button>
-                <button className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded">
-                  Buy Now
-                </button>
+                <Link
+                onClick={()=>{
+                  dispatch({type:'clearCart'});
+                  dispatch({
+                    type: "addToCart",
+                    payload: {
+                      id: data.id,
+                      title: data.title,
+                      price: data.price,
+                      img: data.image,
+                    },
+                  });
+                }}
+                  to={"/checkout"}
+                  className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded"
+                >
+                  <button>Buy Now</button>
+                </Link>
               </div>
             </div>
           </div>

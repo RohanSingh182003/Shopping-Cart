@@ -1,56 +1,64 @@
-import React, { useContext, useEffect, useState } from "react";
-import AppContext from "../../Context/AppContext";
+import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import AppContext from '../../Context/AppContext';
 import { MdDeleteForever } from "react-icons/md";
-import { Link } from "react-router-dom";
 
-const Cart = () => {
-  const { state, dispatch } = useContext(AppContext);
-  const [product, setProduct] = useState([]);
-  const [key, setKey] = useState(null);
 
-  const renderItem = () => {
-    setKey(Math.random());
-  };
+const Checkout = (props) => {
 
-  const addToCart = (id, title, price, image) => {
-    dispatch({
-      type: "addToCart",
-      payload: { id, title, price, image },
-    });
-    renderItem();
-  };
+    const { state, dispatch } = useContext(AppContext);
+    const [product, setProduct] = useState([]);
+    const [key, setKey] = useState(null);
 
-  const removefromCart = (id) => {
-    dispatch({
-      type: "removeItemFromCart",
-      payload: { id },
-    });
-    renderItem();
-  };
-
-  const clearFromCart = (id) => {
-    dispatch({
-      type: "clearItemFromCart",
-      payload: { id },
-    });
-    renderItem();
-  };
-
-  const clearCart = () => {
-    dispatch({
-      type: "clearCart",
-    });
-    renderItem();
-  };
-
-  useEffect(() => {
-    setProduct(state.cart);
-  }, [key]);
+    const renderItem = () => {
+        setKey(Math.random());
+      };
+    
+      const addToCart = (id, title, price, image) => {
+        dispatch({
+          type: "addToCart",
+          payload: { id, title, price, image },
+        });
+        renderItem();
+      };
+    
+      const removefromCart = (id) => {
+        dispatch({
+          type: "removeItemFromCart",
+          payload: { id },
+        });
+        renderItem();
+      };
+    
+      const clearFromCart = (id) => {
+        dispatch({
+          type: "clearItemFromCart",
+          payload: { id },
+        });
+        renderItem();
+      };
+    
+      useEffect(() => {
+        props.data(30)
+        setProduct(state.cart);
+        props.data(100)
+      }, [key]);
+  
 
   return (
-    <div className="flex flex-col lg:px-36">
-      <p className="text-3xl text-center border-b py-2 text-violet-800">Cart</p>
-      <div>
+    <div>
+        <h2 className='text-3xl py-4 md:py-6 border-b text-center text-violet-600'>Enter your Details</h2>
+        <div className='flex flex-col space-y-2 justify-center md:grid md:gap-2 md:grid-cols-2 px-4 md:px-16 lg:px-28'>
+            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="text" name="first_name" id="first_name" placeholder='Enter your first name' />
+            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="text" name="last_name" id="last_name" placeholder='Enter your last name' />
+            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="email" name="email" id="email" placeholder='Enter your email address' />
+            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="number" name="phone" id="phone" placeholder='Enter your phone number' />
+            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="number" name="pin" id="pin" placeholder='Enter your pin code' />
+            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="text" name="text" id="text" placeholder='Enter your state name' />
+            <textarea className='focus:outline-none p-2 border border-violet-500 text-violet-700 col-span-2 rounded-md'  placeholder='Enter your full address' name="address" id="address" cols="30" rows="10"></textarea>
+        </div>
+        <h2 className='text-3xl py-4 md:py-6 border-b text-center text-violet-600'>Your products</h2>
+        <div>
         {product.length > 0 ? (
           product.map((item) => {
             return (
@@ -64,7 +72,7 @@ const Cart = () => {
                 <div className="grid place-items-center w-full">
                   <p className="text-xl px-3">{item.title}</p>
                   <p className="my-1 text-xl text-green-600 font-bold">
-                    ₹ {item.price}
+                  ₹ {item.price}
                   </p>
                   <div className="flex w-32 items-center justify-between text-xl my-2">
                     <button
@@ -111,23 +119,17 @@ const Cart = () => {
               <span className="text-violet-700"> Total Price : </span>
               <span>₹ {Math.floor(state.subTotal)}</span>
             </p>
-            <div className="flex w-40 justify-between items-center">
               <Link
                 className="p-2 w-fit bg-violet-500 text-white rounded-md hover:bg-violet-600"
                 to={"/checkout"}
               >
-                <button>Checkout</button>
+                <button>Pay now</button>
               </Link>
-              <MdDeleteForever
-                onClick={clearCart}
-                className="text-4xl text-red-600 cursor-pointer"
-              />
-            </div>
           </div>
         )}
-      </div>
+        </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Checkout
