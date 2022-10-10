@@ -123,7 +123,7 @@ const Checkout = (props) => {
                 className="p-2 w-fit bg-violet-500 text-white rounded-md hover:bg-violet-600"
                 to={"/checkout"}
               >
-                <button>Pay now</button>
+                <button>Place Order</button>
               </Link>
           </div>
         )}
