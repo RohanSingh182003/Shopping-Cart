@@ -1,7 +1,7 @@
 import React from "react";
 import { ImSearch } from "react-icons/im";
 
-const Search = () => {
+const SearchComponent = () => {
   return (
     <div className="grid place-items-center m-2">
       <form className="mx-auto flex items-center border rounded-md bg-white md:w-96">
@@ -12,4 +12,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchComponent;

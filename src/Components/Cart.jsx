@@ -66,7 +66,7 @@ const Cart = () => {
                   <p className="my-1 text-xl text-green-600 font-bold">
                     ₹ {item.price}
                   </p>
-                  <div className="w-24 flex justify-between">
+                  <div className="w-16 flex justify-between">
                     {item.color !=  null && (
                       <button
                         style={{ backgroundColor: item.color }}
@@ -77,19 +77,19 @@ const Cart = () => {
                       <p className="text-xl text-gray-800">{item.size}</p>
                     )}
                   </div>
-                  <div className="flex w-32 items-center justify-between text-xl my-2">
+                  <div className="flex w-28 items-center justify-between text-xl my-2 border">
                     <button
                       onClick={() =>
                         addToCart(item.id, item.title, item.price, item.image)
                       }
-                      className="w-7 font-bold text-green-500 cursor-pointer"
+                      className="w-7 font-bold text-green-500 cursor-pointer border-r"
                     >
                       <p className="text-2xl"> + </p>
                     </button>
                     <p className="">{item.qty}</p>
                     <button
                       onClick={() => removefromCart(item.id)}
-                      className="w-7 font-bold text-red-500 cursor-pointer"
+                      className="w-7 font-bold text-red-500 cursor-pointer border-l"
                     >
                       <p className="text-2xl"> - </p>
                     </button>

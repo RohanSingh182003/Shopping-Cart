@@ -28,11 +28,11 @@ const Product = (props) => {
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-8 mx-auto">
-        <div className="lg:w-full mx-auto flex flex-wrap">
-          <div className="lg:w-1/2 w-full lg:h-96 h-64 grid place-items-center">
+        <div className="mx-auto flex flex-wrap">
+          <div className="lg:w-1/2 w-full flex justify-center items-center lg:h-96 h-64 object-cover object-center rounded">
             <img
               alt="ecommerce"
-              className="object-cover object-center h-full rounded"
+              className="h-full rounded"
               src={data.image}
             />
           </div>
