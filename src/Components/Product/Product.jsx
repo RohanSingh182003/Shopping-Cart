@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import AppContext from "../../Context/AppContext";
+import AppContext from "../../../Context/AppContext";
 import Check_Servicebility from "./Check_Servicebility";
 
 const Product = (props) => {

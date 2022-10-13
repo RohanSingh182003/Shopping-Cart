@@ -8,12 +8,14 @@ import FilterComponent from "./FilterComponent";
 import OrdersComponent from "./OrdersComponent";
 import BeASellorComponent from "./BeASellorComponent";
 import LoginComponent from "./LoginComponent";
+import Toast from "./Toast";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const { state, dispatch } = useContext(AppContext);
   return (
     <div className="sticky top-0 bg-violet-500 h-full">
+      <Toast/>
       <div className="px-2 flex justify-between lg:justify-around items-center h-16  border-b border-violet-600">
         {toggle ? (
           <AiOutlineClose
