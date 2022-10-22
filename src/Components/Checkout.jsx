@@ -21,18 +21,18 @@ const Checkout = (props) => {
         renderItem();
       };
     
-      const removefromCart = (id) => {
+      const removefromCart = (title) => {
         dispatch({
           type: "removeItemFromCart",
-          payload: { id },
+          payload: { title },
         });
         renderItem();
       };
     
-      const clearFromCart = (id) => {
+      const clearFromCart = (title) => {
         dispatch({
           type: "clearItemFromCart",
-          payload: { id },
+          payload: { title },
         });
         renderItem();
       };
@@ -95,14 +95,14 @@ const Checkout = (props) => {
                     </button>
                     <p className="">{item.qty}</p>
                     <button
-                      onClick={() => removefromCart(item.id)}
+                      onClick={() => removefromCart(item.title)}
                       className="w-7 font-bold text-error cursor-pointer border-l"
                     >
                       <p className="text-2xl"> - </p>
                     </button>
                   </div>
                   <button
-                    onClick={() => clearFromCart(item.id)}
+                    onClick={() => clearFromCart(item.title)}
                     className="btn btn-error bg-red-500 rounded-md px-2 py-1 w-28 text-white font-bold hover:bg-red-600"
                   >
                     Remove

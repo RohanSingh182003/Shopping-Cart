@@ -30,10 +30,10 @@ const Navbar = () => {
         </Link>
         {/* cart */}
         <Link onClick={() => setToggle(false)} to="/cart">
-          <div className="border-2 p-1 rounded-full border-violet-200 mx-2 relative">
-            <AiOutlineShoppingCart className="text-2xl text-white cursor-pointer" />
-            <div className="absolute w-4 text-center bg-green-500 rounded-full text-xs -top-1 -right-1">
-              <p className="text-xs text-white font-semibold ">
+          <div className="p-1 mx-2 relative">
+            <AiOutlineShoppingCart className="text-3xl text-white cursor-pointer" />
+            <div className="absolute w-4 text-center bg-secondary rounded-full text-xs top-0 right-2">
+              <p className="text-sm text-white font-semibold ">
                 {state.cart.length}
               </p>
             </div>

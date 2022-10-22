@@ -49,7 +49,7 @@ const Product = (props) => {
               {data.brand}
             </h2>
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-              {data.title}
+              {setTitle(data.title, color, size)}
             </h1>
             {/* <div className="flex mb-4">
             </div> */}
