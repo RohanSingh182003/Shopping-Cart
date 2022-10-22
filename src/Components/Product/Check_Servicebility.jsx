@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import useFetch from "../CustomHooks/useFetch";
+import useFetch from "../../CustomHooks/useFetch";
 
 const Check_Servicebility = () => {
   const {data} = useFetch('https://rohansingh182003.github.io/JSON-files-for-rapid-development/pincodes.json')
@@ -15,15 +15,15 @@ const Check_Servicebility = () => {
   }
   }
   return (
-    <div className="border-b-2 border-purple-500 w-fit px-2 my-6 md:my-4">
+    <div className="border-b-2 border-secondary w-fit px-2 my-6 md:my-4">
       <input
       value={pin}
       onChange={((e)=> setPin(e.target.value))}
         placeholder="Enter delivery pincode"
-        className="text-violet-700 focus:outline-none"
+        className="focus:outline-none text-secondary"
         type="text"
       />
-      <button onClick={checkPin} className="py-1 px-2 m-1 rounded-md text-purple-50 bg-purple-500 hover:bg-purple-600">
+      <button onClick={checkPin} className="btn btn-sm btn-secondary my-1">
         Check
       </button>
     </div>

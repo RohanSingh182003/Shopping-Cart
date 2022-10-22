@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import AppContext from '../../Context/AppContext';
-import { MdDeleteForever } from "react-icons/md";
 
 
 const Checkout = (props) => {

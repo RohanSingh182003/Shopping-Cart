@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../../../Context/AppContext";
-import { AiOutlineShoppingCart , AiOutlineClose } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineClose } from "react-icons/ai";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import SearchComponent from "./SearchComponent";
@@ -14,54 +14,46 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const { state, dispatch } = useContext(AppContext);
   return (
-    <div className="sticky top-0 bg-violet-500 h-full">
-      <Toast/>
-      <div className="px-2 flex justify-between lg:justify-around items-center h-16  border-b border-violet-600">
-        {toggle ? (
-          <AiOutlineClose
-            onClick={() => setToggle(!toggle)}
-            className="text-2xl mx-2 text-violet-50 cursor-pointer"
-          />
-        ) : (
-          <BiMenuAltLeft
-            onClick={() => setToggle(!toggle)}
-            className="text-2xl mx-2 text-violet-50 cursor-pointer"
-          />
-        )}
+    <div className="sticky top-0 bg-secondary h-full">
+      <Toast />
+      <div className="px-2 flex justify-between lg:justify-around items-center h-16">
+        <label className="btn btn-circle swap swap-rotate btn-secondary">
+          <input onClick={() => setToggle(!toggle)} type="checkbox" />
+          {toggle ?<AiOutlineClose className="text-2xl mx-2 text-white cursor-pointer fill-current"/> :<BiMenuAltLeft className="text-2xl mx-2 text-white cursor-pointer fill-current"/>
+          }
+        </label>
         <Link
           to="/"
-          className="text-center text-2xl text-violet-50 font-semibold mx-2"
+          className="text-center text-2xl text-white font-semibold mx-2"
         >
           <button>Ecommerce</button>
         </Link>
         {/* cart */}
         <Link onClick={() => setToggle(false)} to="/cart">
           <div className="border-2 p-1 rounded-full border-violet-200 mx-2 relative">
-            <AiOutlineShoppingCart className="text-2xl text-violet-50 cursor-pointer" />
+            <AiOutlineShoppingCart className="text-2xl text-white cursor-pointer" />
             <div className="absolute w-4 text-center bg-green-500 rounded-full text-xs -top-1 -right-1">
-              {state.cart.length > 0 && (
-                <p className="text-xs text-white font-semibold ">
-                  {state.cart.length}
-                </p>
-              )}
+              <p className="text-xs text-white font-semibold ">
+                {state.cart.length}
+              </p>
             </div>
           </div>
         </Link>
       </div>
       {toggle && (
         <div className="bg-white">
-          <div className="flex flex-col md:flex-row items-center w-full justify-evenly bg-violet-500">
+          <div className="flex flex-col md:flex-row items-center w-full justify-evenly bg-secondary">
             <div className="flex justify-evenly items-center mt-2 md:mt-0 w-full">
-              <FilterComponent/>
-              <BeASellorComponent/>
-              <OrdersComponent/>
+              <FilterComponent />
+              <BeASellorComponent />
+              <OrdersComponent />
             </div>
             <div className="flex justify-evenly items-center mt-2 md:mt-0 w-full">
               <SearchComponent />
-              <LoginComponent/>
+              <LoginComponent />
             </div>
           </div>
-          <ul className="w-full h-[76vh] md:h-auto flex flex-col md:flex-row justify-evenly items-center border border-violet-600 py-2 text-violet-50 bg-violet-500">
+          <ul className="w-full h-[76vh] md:h-auto flex flex-col md:flex-row justify-evenly items-center py-2 text-white bg-secondary">
             <Link
               onClick={() => setToggle(false)}
               to={"/"}

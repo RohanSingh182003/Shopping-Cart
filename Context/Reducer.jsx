@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 
 const Reducer = (state, action) => {
   // calculates subtotal
@@ -27,6 +28,7 @@ const Reducer = (state, action) => {
       let color = action.payload.color;
       let size = action.payload.size;
       let item = { id, price, qty, title, image , color , size };
+      toast.success('Item added into cart.')
       return {
         cart: [...state.cart, item],
         subTotal: state.subTotal + price,

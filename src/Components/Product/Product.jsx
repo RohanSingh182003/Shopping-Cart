@@ -17,7 +17,7 @@ const Product = (props) => {
       "https://rohansingh182003.github.io/JSON-files-for-rapid-development/store_api.json"
     );
     let prod = res.data.filter((item) => item.id === Number.parseInt(id));
-    setData(prod[0]);
+    setData(prod[0])
     props.data(100);
   };
 
@@ -43,72 +43,13 @@ const Product = (props) => {
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {data.title}
             </h1>
-            <div className="flex mb-4">
-              {/* rateing */}
-              <span className="flex items-center">
-                <svg
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-4 h-4 text-purple-500"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                </svg>
-                <svg
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-4 h-4 text-purple-500"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                </svg>
-                <svg
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-4 h-4 text-purple-500"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                </svg>
-                <svg
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-4 h-4 text-purple-500"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                </svg>
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="w-4 h-4 text-purple-500"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                </svg>
-                <span className="text-gray-600 ml-3">4 Reviews</span>
-              </span>
-            </div>
+            {/* <div className="flex mb-4">
+            </div> */}
             <p className="leading-relaxed">{data.description}</p>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
               {data.color?.length > 0 && (
                 <div className="flex">
-                  {data.color && <span className="mr-3">Color</span>}
+                  {data.color && <span className="mr-3">Colors</span>}
                   {data.color &&
                     data.color.map((item) => {
                       return (
@@ -118,46 +59,27 @@ const Product = (props) => {
                             setColor(item);
                           }}
                           style={{ backgroundColor: item }}
-                          className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none focus:ring-purple-200 focus:border-purple-500 "
+                          className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none focus:ring-pink-200 focus:border-secondary"
                         ></button>
                       );
                     })}
                 </div>
               )}
-              {data.size?.length > 0 && (
-                <div className="flex ml-6 items-center">
-                  {data.size && <span className="mr-3">Size</span>}
-                  {data.size && (
-                    <div className="relative">
-                      <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500 text-base pl-3 pr-10">
-                        {data.size.map((item) => {
-                          return (
-                            <option
-                              key={item}
-                              onClick={() => {
-                                setSize(item);
-                              }}
-                            >
-                              {item}
-                            </option>
-                          );
-                        })}
-                      </select>
-                      <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                        <svg
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          className="w-4 h-4"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M6 9l6 6 6-6"></path>
-                        </svg>
-                      </span>
-                    </div>
-                  )}
+               {data.size?.length > 0 && (
+                <div className="flex items-center ml-6">
+                  {data.size && <span className="mr-3">Sizes</span>}
+                  {data.size &&
+                    data.size.map((item) => {
+                      return (
+                        <div
+                          key={item}
+                          onClick={() => {
+                            setSize(item);
+                          }}
+                          className="border p-1 mx-1 focus:outline-none focus:ring-pink-200 focus:border-secondary"
+                        >{item}</div>
+                      );
+                    })}
                 </div>
               )}
             </div>
@@ -167,6 +89,7 @@ const Product = (props) => {
                 ₹ {data.price}
               </span>
               <div className="flex space-x-2">
+                {/* add to cart button */}
                 <button
                   onClick={() => {
                     dispatch({
@@ -181,10 +104,11 @@ const Product = (props) => {
                       },
                     });
                   }}
-                  className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded"
+                  className="btn btn-secondary"
                 >
                   Add To cart
                 </button>
+                {/* buy now button */}
                 <Link
                   onClick={() => {
                     dispatch({ type: "clearCart" });
@@ -201,9 +125,8 @@ const Product = (props) => {
                     });
                   }}
                   to={"/checkout"}
-                  className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded"
                 >
-                  <button>Buy Now</button>
+                  <button className="btn btn-secondary">Buy Now</button>
                 </Link>
               </div>
             </div>

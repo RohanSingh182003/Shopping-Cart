@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import LoadingBar from 'react-top-loading-bar'
 import AppState from "../Context/AppState";
-import Home from "./Components/Home";
+import Home from "./Components/Home/Home";
 import Navbar from "./Components/Navbar/Navbar";
 import Cart from "./Components/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
       <AppState>
       <LoadingBar
-        color='purple'
+        color='pink'
         progress={progress}
         height={2}
         transitionTime={100}
@@ -27,11 +27,11 @@ function App() {
       />
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home data={loadProgress} />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout data={loadProgress} />} />
-          <Route path="/:category" element={<Catagory data={loadProgress} />} />
-          <Route path="/product/:id" element={<Product data={loadProgress} />} />
+          <Route exact path="/" element={<Home data={loadProgress} />} />
+          <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/checkout" element={<Checkout data={loadProgress} />} />
+          <Route exact path="/:category" element={<Catagory data={loadProgress} />} />
+          <Route exact path="/product/:id" element={<Product data={loadProgress} />} />
         </Routes>
         <Footer />
       </AppState>
