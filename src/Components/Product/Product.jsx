@@ -71,13 +71,13 @@ const Product = (props) => {
                   {data.size &&
                     data.size.map((item) => {
                       return (
-                        <div
+                        <button
                           key={item}
                           onClick={() => {
                             setSize(item);
                           }}
-                          className="border p-1 mx-1 focus:outline-none focus:ring-pink-200 focus:border-secondary"
-                        >{item}</div>
+                          className="border-2 border-gray-300 rounded-md w-10 h-6 focus:outline-none focus:ring-pink-200 focus:border-secondary"
+                        >{item}</button>
                       );
                     })}
                 </div>

@@ -27,7 +27,6 @@ const Reducer = (state, action) => {
       let title = action.payload.title;
       let color = action.payload.color;
       let size = action.payload.size;
-      let uid = Math.random()
       let item = { id, uid , price, qty, title, image , color , size };
       console.log(item);
       toast.success('Item added into cart.')
