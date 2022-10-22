@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
       <AppState>
       <LoadingBar
-        color='pink'
+        color='D426BD'
         progress={progress}
         height={2}
         transitionTime={100}

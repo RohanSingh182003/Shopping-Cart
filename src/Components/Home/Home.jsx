@@ -24,7 +24,7 @@ const AllProducts = (props) => {
   return (
     <>
       {/* <Crousel/> */}
-      <p className="text-center py-3 text-2xl text-violet-800">
+      <p className="text-center py-3 text-2xl text-secondary">
         Shop Latest Items
       </p>
       {data ? (

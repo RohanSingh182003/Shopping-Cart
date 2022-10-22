@@ -46,17 +46,17 @@ const Checkout = (props) => {
 
   return (
     <div>
-        <h2 className='text-3xl py-4 md:py-6 border-b text-center text-violet-600'>Enter your Details</h2>
+        <h2 className='text-3xl py-4 md:py-6 border-b text-center text-secondary'>Enter your Details</h2>
         <div className='flex flex-col space-y-2 justify-center md:grid md:gap-2 md:grid-cols-2 px-4 md:px-16 lg:px-28'>
-            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="text" name="first_name" id="first_name" placeholder='Enter your first name' />
-            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="text" name="last_name" id="last_name" placeholder='Enter your last name' />
-            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="email" name="email" id="email" placeholder='Enter your email address' />
-            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="number" name="phone" id="phone" placeholder='Enter your phone number' />
-            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="number" name="pin" id="pin" placeholder='Enter your pin code' />
-            <input className='focus:outline-none p-2 border-b-2 border-violet-500 text-violet-700' type="text" name="text" id="text" placeholder='Enter your state name' />
-            <textarea className='focus:outline-none p-2 border border-violet-500 text-violet-700 col-span-2 rounded-md'  placeholder='Enter your full address' name="address" id="address" cols="30" rows="10"></textarea>
+            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="text" name="first_name" id="first_name" placeholder='Enter your first name' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="text" name="last_name" id="last_name" placeholder='Enter your last name' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="email" name="email" id="email" placeholder='Enter your email address' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="number" name="phone" id="phone" placeholder='Enter your phone number' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="number" name="pin" id="pin" placeholder='Enter your pin code' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="text" name="text" id="text" placeholder='Enter your state name' />
+            <textarea className='focus:outline-none p-2 border border-secondary text-secondary col-span-2 rounded-md'  placeholder='Enter your full address' name="address" id="address" cols="30" rows="10"></textarea>
         </div>
-        <h2 className='text-3xl py-4 md:py-6 border-b text-center text-violet-600'>Your products</h2>
+        <h2 className='text-3xl py-4 md:py-6 border-b text-center text-secondary'>Your products</h2>
         <div>
         {product.length > 0 ? (
           product.map((item) => {
@@ -89,21 +89,21 @@ const Checkout = (props) => {
                       onClick={() =>
                         addToCart(item.id, item.title, item.price, item.image)
                       }
-                      className="w-7 font-bold text-green-500 cursor-pointer border-r"
+                      className="w-7 font-bold text-success cursor-pointer border-r"
                     >
                       <p className="text-2xl"> + </p>
                     </button>
                     <p className="">{item.qty}</p>
                     <button
                       onClick={() => removefromCart(item.id)}
-                      className="w-7 font-bold text-red-500 cursor-pointer border-l"
+                      className="w-7 font-bold text-error cursor-pointer border-l"
                     >
                       <p className="text-2xl"> - </p>
                     </button>
                   </div>
                   <button
                     onClick={() => clearFromCart(item.id)}
-                    className="bg-red-500 text-xl rounded-md px-2 py-1 w-44 text-white font-bold hover:bg-red-600"
+                    className="btn btn-error bg-red-500 rounded-md px-2 py-1 w-28 text-white font-bold hover:bg-red-600"
                   >
                     Remove
                   </button>
@@ -114,10 +114,10 @@ const Checkout = (props) => {
         ) : (
           <div className="w-full h-80 md:h-96 grid place-items-center">
             <div className="text-center">
-              <h2 className="text-3xl font-semibold text-violet-700">
+              <h2 className="text-3xl font-semibold text-secondary">
                 Cart Empty
               </h2>
-              <p className="my-3 text-violet-500">
+              <p className="my-3 text-secondary">
                 Shop Now , We have best products for you with attractive offers!
               </p>
             </div>
@@ -126,14 +126,13 @@ const Checkout = (props) => {
         {product.length > 0 && (
           <div className="py-6 flex px-10 justify-between items-center border-t mt-4 sticky bottom-0 bg-white">
             <p className="text-xl text-green-600 font-bold">
-              <span className="text-violet-700"> Total Price : </span>
+              <span className="text-secondary"> Total Price : </span>
               <span>₹ {Math.floor(state.subTotal)}</span>
             </p>
               <Link
-                className="p-2 w-fit bg-violet-500 text-white rounded-md hover:bg-violet-600"
                 to={"/checkout"}
               >
-                <button>Place Order</button>
+                <button className='btn btn-secondary'>Place Order</button>
               </Link>
           </div>
         )}

@@ -24,7 +24,7 @@ const Catagory = (props) => {
 
   return (
     <>
-      <p className="text-center py-3 text-2xl text-violet-800">
+      <p className="text-center py-3 text-2xl text-secondary">
         Category :{" "}
         <span className="font-semibold capitalize"> {prod.category}</span>
       </p>
