@@ -114,10 +114,10 @@ const Checkout = (props) => {
         ) : (
           <div className="w-full h-80 md:h-96 grid place-items-center">
             <div className="text-center">
-              <h2 className="text-3xl font-semibold ">
+              <h2 className="text-3xl font-semibold text-secondary">
                 Cart Empty
               </h2>
-              <p className="my-3 ">
+              <p className="my-3 text-secondary">
                 Shop Now , We have best products for you with attractive offers!
               </p>
             </div>
