@@ -12,7 +12,7 @@ const Reducer = (state, action) => {
 
   switch (action.type) {
     case "addToCart":
-      let prod = state.cart.find((e) => e.id === action.payload.id);
+      let prod = state.cart.find((e) => e.title === action.payload.title);
       if (prod) {
         prod.qty += 1;
         return {
@@ -27,8 +27,7 @@ const Reducer = (state, action) => {
       let title = action.payload.title;
       let color = action.payload.color;
       let size = action.payload.size;
-      let item = { id, uid , price, qty, title, image , color , size };
-      console.log(item);
+      let item = { id , price, qty, title, image , color , size };
       toast.success('Item added into cart.')
       return {
         cart: [...state.cart, item],
@@ -36,7 +35,7 @@ const Reducer = (state, action) => {
       };
 
     case "removeItemFromCart":
-      let remove_prod = state.cart.find((e) => e.id === action.payload.id);
+      let remove_prod = state.cart.find((e) => e.title === action.payload.title);
       if (remove_prod.qty > 1) {
         remove_prod.qty -= 1;
         return {
@@ -44,7 +43,7 @@ const Reducer = (state, action) => {
           subTotal: subTotal(state.cart),
         };
       } else {
-        let del_prod = state.cart.filter((e) => e.id != action.payload.id);
+        let del_prod = state.cart.filter((e) => e.title != action.payload.title);
         return {
           cart: del_prod,
           subTotal: subTotal(del_prod),
@@ -52,7 +51,7 @@ const Reducer = (state, action) => {
       }
 
     case "clearItemFromCart":
-      let clear_prod = state.cart.filter((e) => e.id != action.payload.id);
+      let clear_prod = state.cart.filter((e) => e.title != action.payload.title);
       return {
         cart: clear_prod,
         subTotal: subTotal(clear_prod),

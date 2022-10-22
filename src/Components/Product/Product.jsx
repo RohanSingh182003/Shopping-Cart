@@ -11,13 +11,25 @@ const Product = (props) => {
   const [size, setSize] = useState(null);
   let { id } = useParams();
 
+  const setTitle = (title, color, size) => {
+    if (color != null && size != null) {
+      return title + " " + "(" + color + "/" + size + ")";
+    } else if (color != null && size === null) {
+      return title + " " + "(" + color + ")";
+    } else if (color === null && size != null) {
+      return title + " " + "(" + size + ")";
+    } else {
+      return title;
+    }
+  };
+
   const getData = async (id) => {
     props.data(30);
     let res = await axios.get(
       "https://rohansingh182003.github.io/JSON-files-for-rapid-development/store_api.json"
     );
     let prod = res.data.filter((item) => item.id === Number.parseInt(id));
-    setData(prod[0])
+    setData(prod[0]);
     props.data(100);
   };
 
@@ -30,11 +42,7 @@ const Product = (props) => {
       <div className="container px-5 py-8 mx-auto">
         <div className="mx-auto flex flex-wrap">
           <div className="lg:w-1/2 w-full flex justify-center items-center lg:h-96 h-64 object-cover object-center rounded">
-            <img
-              alt="ecommerce"
-              className="h-full rounded"
-              src={data.image}
-            />
+            <img alt="ecommerce" className="h-full rounded" src={data.image} />
           </div>
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
@@ -65,7 +73,7 @@ const Product = (props) => {
                     })}
                 </div>
               )}
-               {data.size?.length > 0 && (
+              {data.size?.length > 0 && (
                 <div className="flex items-center ml-6">
                   {data.size && <span className="mr-3">Sizes</span>}
                   {data.size &&
@@ -77,7 +85,9 @@ const Product = (props) => {
                             setSize(item);
                           }}
                           className="border-2 border-gray-300 rounded-md w-10 h-6 focus:outline-none focus:ring-pink-200 focus:border-secondary"
-                        >{item}</button>
+                        >
+                          {item}
+                        </button>
                       );
                     })}
                 </div>
@@ -96,7 +106,7 @@ const Product = (props) => {
                       type: "addToCart",
                       payload: {
                         id: data.id,
-                        title: data.title,
+                        title: setTitle(data.title, color, size),
                         price: data.price,
                         img: data.image,
                         color: color === null ? null : color,
