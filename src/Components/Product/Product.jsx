@@ -96,7 +96,7 @@ const Product = (props) => {
                       type: "addToCart",
                       payload: {
                         id: data.id,
-                        title: data.title + `( ${color != null? color:''} / ${size != null ? size:''} )`,
+                        title: data.title,
                         price: data.price,
                         img: data.image,
                         color: color === null ? null : color,
@@ -116,7 +116,7 @@ const Product = (props) => {
                       type: "addToCart",
                       payload: {
                         id: data.id,
-                        title: data.title + `( ${color != null? color:''} / ${size != null ? size:''} )`,
+                        title: data.title,
                         price: data.price,
                         img: data.image,
                         color: color === null ? null : color,
