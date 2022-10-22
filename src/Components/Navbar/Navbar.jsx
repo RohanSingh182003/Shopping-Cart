@@ -57,35 +57,35 @@ const Navbar = () => {
             <Link
               onClick={() => setToggle(false)}
               to={"/"}
-              className="hover:text-violet-100 cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
+              className="cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
             >
               All Products
             </Link>
             <Link
               onClick={() => setToggle(false)}
               to={`/men's clothing`}
-              className="hover:text-violet-100 cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
+              className="cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
             >
               Men's Fashion
             </Link>
             <Link
               onClick={() => setToggle(false)}
               to={`/women's clothing`}
-              className="hover:text-violet-100 cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
+              className="cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
             >
               Women's Fashion
             </Link>
             <Link
               onClick={() => setToggle(false)}
               to={"/electronics"}
-              className="hover:text-violet-100 cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
+              className="cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
             >
               Electronics
             </Link>
             <Link
               onClick={() => setToggle(false)}
               to={"/jewelery"}
-              className="hover:text-violet-100 cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
+              className="cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
             >
               Jewelery
             </Link>

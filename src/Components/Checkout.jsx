@@ -46,17 +46,17 @@ const Checkout = (props) => {
 
   return (
     <div>
-        <h2 className='text-3xl py-4 md:py-6 border-b text-center text-secondary'>Enter your Details</h2>
+        <h2 className='text-3xl py-4 md:py-6 border-b text-center '>Enter your Details</h2>
         <div className='flex flex-col space-y-2 justify-center md:grid md:gap-2 md:grid-cols-2 px-4 md:px-16 lg:px-28'>
-            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="text" name="first_name" id="first_name" placeholder='Enter your first name' />
-            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="text" name="last_name" id="last_name" placeholder='Enter your last name' />
-            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="email" name="email" id="email" placeholder='Enter your email address' />
-            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="number" name="phone" id="phone" placeholder='Enter your phone number' />
-            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="number" name="pin" id="pin" placeholder='Enter your pin code' />
-            <input className='focus:outline-none p-2 border-b-2 border-secondary text-secondary' type="text" name="text" id="text" placeholder='Enter your state name' />
-            <textarea className='focus:outline-none p-2 border border-secondary text-secondary col-span-2 rounded-md'  placeholder='Enter your full address' name="address" id="address" cols="30" rows="10"></textarea>
+            <input className='focus:outline-none p-2 border-b-2 border-secondary ' type="text" name="first_name" id="first_name" placeholder='Enter your first name' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary ' type="text" name="last_name" id="last_name" placeholder='Enter your last name' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary ' type="email" name="email" id="email" placeholder='Enter your email address' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary ' type="number" name="phone" id="phone" placeholder='Enter your phone number' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary ' type="number" name="pin" id="pin" placeholder='Enter your pin code' />
+            <input className='focus:outline-none p-2 border-b-2 border-secondary ' type="text" name="text" id="text" placeholder='Enter your state name' />
+            <textarea className='focus:outline-none p-2 border border-secondary  col-span-2 rounded-md'  placeholder='Enter your full address' name="address" id="address" cols="30" rows="10"></textarea>
         </div>
-        <h2 className='text-3xl py-4 md:py-6 border-b text-center text-secondary'>Your products</h2>
+        <h2 className='text-3xl py-4 md:py-6 border-b text-center '>Your products</h2>
         <div>
         {product.length > 0 ? (
           product.map((item) => {
@@ -114,10 +114,10 @@ const Checkout = (props) => {
         ) : (
           <div className="w-full h-80 md:h-96 grid place-items-center">
             <div className="text-center">
-              <h2 className="text-3xl font-semibold text-secondary">
+              <h2 className="text-3xl font-semibold ">
                 Cart Empty
               </h2>
-              <p className="my-3 text-secondary">
+              <p className="my-3 ">
                 Shop Now , We have best products for you with attractive offers!
               </p>
             </div>
@@ -126,7 +126,7 @@ const Checkout = (props) => {
         {product.length > 0 && (
           <div className="py-6 flex px-10 justify-between items-center border-t mt-4 sticky bottom-0 bg-white">
             <p className="text-xl text-green-600 font-bold">
-              <span className="text-secondary"> Total Price : </span>
+              <span className=""> Total Price : </span>
               <span>₹ {Math.floor(state.subTotal)}</span>
             </p>
               <Link

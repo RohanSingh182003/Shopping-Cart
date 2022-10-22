@@ -20,7 +20,7 @@ const Check_Servicebility = () => {
       value={pin}
       onChange={((e)=> setPin(e.target.value))}
         placeholder="Enter delivery pincode"
-        className="focus:outline-none text-secondary"
+        className="focus:outline-none text-black"
         type="text"
       />
       <button onClick={checkPin} className="btn btn-sm btn-secondary my-1">

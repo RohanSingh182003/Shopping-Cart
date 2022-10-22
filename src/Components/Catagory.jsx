@@ -26,7 +26,7 @@ const Catagory = (props) => {
     <>
       <p className="text-center py-3 text-2xl text-secondary">
         Category :{" "}
-        <span className="font-semibold capitalize"> {prod.category}</span>
+        <span className="font-semibold capitalize text-gray-900"> {prod.category}</span>
       </p>
       {data ? (
         <div className="flex flex-wrap justify-evenly md:mx-16 lg:px-6">
