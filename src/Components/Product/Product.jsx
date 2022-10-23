@@ -11,16 +11,47 @@ const Product = (props) => {
   const [size, setSize] = useState(null);
   let { id } = useParams();
 
+  // to set the title of the product
   const setTitle = (title, color, size) => {
     if (color != null && size != null) {
       return title + " " + "(" + color + "/" + size + ")";
-    } else if (color != null && size === null) {
+    } else if (color != null) {
       return title + " " + "(" + color + ")";
-    } else if (color === null && size != null) {
+    } else if (size != null) {
       return title + " " + "(" + size + ")";
     } else {
       return title;
     }
+  };
+
+  // add to cart handler function
+  const handleAddToCart = (id, title, price, image, color, size) => {
+    const handleDispatch = () => {
+      dispatch({
+        type: "addToCart",
+        payload: {
+          id: id,
+          title: title,
+          price: price,
+          img: image,
+          color: color,
+          size: size,
+        },
+      });
+    };
+    if (data.color.length > 0 && data.size.length > 0) {
+      if (color === null && size === null) {
+        setColor(data.color[0]);
+        setSize(data.size[0]);
+      } else if (color === null) {
+        setColor(data.color[0]);
+      } else if (size === null) {
+        setSize(data.size[0]);
+      }
+    } else {
+      handleDispatch();
+    }
+    handleDispatch();
   };
 
   const getData = async (id) => {
@@ -102,17 +133,14 @@ const Product = (props) => {
                 {/* add to cart button */}
                 <button
                   onClick={() => {
-                    dispatch({
-                      type: "addToCart",
-                      payload: {
-                        id: data.id,
-                        title: setTitle(data.title, color, size),
-                        price: data.price,
-                        img: data.image,
-                        color: color === null ? null : color,
-                        size: size === null ? null : size,
-                      },
-                    });
+                    handleAddToCart(
+                      data.id,
+                      setTitle(data.title, color, size),
+                      data.price,
+                      data.image,
+                      color,
+                      size
+                    );
                   }}
                   className="btn btn-secondary"
                 >

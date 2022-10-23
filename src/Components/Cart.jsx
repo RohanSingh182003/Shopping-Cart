@@ -52,10 +52,10 @@ const Cart = () => {
       <p className="text-3xl text-center border-b py-2 text-secondary">Cart</p>
       <div>
         {product.length > 0 ? (
-          product.map((item) => {
+          product.map((item , index) => {
             return (
               <div
-                key={item.id}
+                key={index}
                 className="w-full p-2 lg:px-12 border flex flex-col md:flex-row items-center my-2 rounded-md"
               >
                 <div className="w-64 h-52 grid place-items-center">

@@ -6,7 +6,6 @@ import Navbar from "./Components/Navbar/Navbar";
 import Cart from "./Components/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Catagory from "./Components/Catagory";
-import Footer from "./Components/Footer";
 import Product from './Components/Product/Product';
 import Checkout from './Components/Checkout';
 
@@ -33,7 +32,6 @@ function App() {
           <Route exact path="/:category" element={<Catagory data={loadProgress} />} />
           <Route exact path="/product/:id" element={<Product data={loadProgress} />} />
         </Routes>
-        <Footer />
       </AppState>
     </BrowserRouter>
   );

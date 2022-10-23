@@ -9,7 +9,6 @@ const useFetch = (url) => {
     }
     useEffect(() => {
         fetchData()
-        console.log(data);
     }, [])
     return { data }
     

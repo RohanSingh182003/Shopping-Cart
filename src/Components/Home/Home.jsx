@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "../Card";
 import Loading from "../Loading";
-import Crousel from "./Crousel";
+import Footer from "../Footer"
+// import Crousel from "./Crousel";
 
 const AllProducts = (props) => {
   // let {loadProgress} = props;
@@ -28,6 +29,7 @@ const AllProducts = (props) => {
         Shop Latest Items
       </p>
       {data ? (
+        <div>
         <div className="flex flex-wrap justify-evenly md:mx-16 lg:px-6">
           {data.map((item) => {
             return (
@@ -43,6 +45,8 @@ const AllProducts = (props) => {
               />
             );
           })}
+        </div>
+        <Footer/>
         </div>
       ) : (
         <Loading />
