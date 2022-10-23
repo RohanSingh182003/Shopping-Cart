@@ -131,6 +131,7 @@ const Cart = () => {
               <MdDeleteForever
                 onClick={clearCart}
                 className="text-4xl text-red-600 cursor-pointer"
+                title="clear cart"
               />
             </div>
           </div>

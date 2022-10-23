@@ -16,9 +16,9 @@ const Product = (props) => {
   const setTitle = (title, color, size) => {
     if (color != null && size != null) {
       return title + " " + "(" + color + "/" + size + ")";
-    } else if (color != null) {
+    } else if (color != null && size === null) {
       return title + " " + "(" + color + ")";
-    } else if (size != null) {
+    } else if (size != null && color === null) {
       return title + " " + "(" + size + ")";
     } else {
       return title;
@@ -45,17 +45,36 @@ const Product = (props) => {
       if (color === null && size === null) {
         setColor(data.color[0]);
         setSize(data.size[0]);
-      } else if (color === null) {
+      } else if (color === null && size != null) {
         setColor(data.color[0]);
-      } else if (size === null) {
+      } else if (size === null && color != null) {
         setSize(data.size[0]);
       }
       if (color === null || size === null) {
         toast.warn("please check varients.");
-      } else if (color != null && size != null) {
+      } else{
         handleDispatch(id, title, price, image, color, size);
       }
-    } else {
+    } 
+    else if(data.color.length > 0 && data.size.length === 0){
+      if(color === null ){
+        toast.warn("please check varients.");
+        setColor(data.color[0])
+      }
+     else{
+      handleDispatch(id, title, price, image, color, size);
+     }
+    }
+    else if(data.size.length > 0 && data.color.length === 0){
+      if(size === null ){
+        toast.warn("please check varients.");
+        setSize(data.size[0])
+      }
+     else{
+      handleDispatch(id, title, price, image, color, size);
+     }
+    }
+    else {
       handleDispatch(id, title, price, image, color, size);
     }
   };
