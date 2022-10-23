@@ -2,11 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "../Card";
 import Loading from "../Loading";
-import Footer from "../Footer"
+import Footer from "../Footer";
 // import Crousel from "./Crousel";
 
 const AllProducts = (props) => {
-  // let {loadProgress} = props;
   const [data, setData] = useState();
   const getData = async () => {
     props.data(20);
@@ -25,28 +24,27 @@ const AllProducts = (props) => {
   return (
     <>
       {/* <Crousel/> */}
-      <p className="text-center py-3 text-2xl ">
-        Shop Latest Items
-      </p>
+      <p className="text-center py-3 text-2xl ">Shop Latest Items</p>
       {data ? (
         <div>
-        <div className="flex flex-wrap justify-evenly md:mx-16 lg:px-6">
-          {data.map((item) => {
-            return (
-              <Card
-                props={{
-                  id: item?.id,
-                  title: item?.title,
-                  price: item?.price,
-                  image: item?.image,
-                  size: item?.size,
-                  color: item?.color,
-                }}
-              />
-            );
-          })}
-        </div>
-        <Footer/>
+          <div className="flex flex-wrap justify-evenly md:mx-16 lg:px-6">
+            {data.map((item, index) => {
+              return (
+                <Card
+                  key={index}
+                  props={{
+                    id: item?.id,
+                    title: item?.title,
+                    price: item?.price,
+                    image: item?.image,
+                    size: item?.size,
+                    color: item?.color,
+                  }}
+                />
+              );
+            })}
+          </div>
+          <Footer />
         </div>
       ) : (
         <Loading />

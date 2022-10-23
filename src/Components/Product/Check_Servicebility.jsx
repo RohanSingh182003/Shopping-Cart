@@ -4,7 +4,7 @@ import useFetch from "../../CustomHooks/useFetch";
 
 const Check_Servicebility = () => {
   const {data} = useFetch('https://rohansingh182003.github.io/JSON-files-for-rapid-development/pincodes.json')
-  const [pin, setPin] = useState(null)
+  const [pin, setPin] = useState('')
   const checkPin = () => {
     if(data.includes(Number.parseInt(pin))){
     toast.success('Pin code is serviceable.')

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import AppContext from "../../../Context/AppContext";
 import Check_Servicebility from "./Check_Servicebility";
 
@@ -24,21 +25,22 @@ const Product = (props) => {
     }
   };
 
+  // add to cart dispatch function
+  const handleDispatch = (id, title, price, image, color, size) => {
+    dispatch({
+      type: "addToCart",
+      payload: {
+        id: id,
+        title: title,
+        price: price,
+        img: image,
+        color: color,
+        size: size,
+      },
+    });
+  };
   // add to cart handler function
   const handleAddToCart = (id, title, price, image, color, size) => {
-    const handleDispatch = () => {
-      dispatch({
-        type: "addToCart",
-        payload: {
-          id: id,
-          title: title,
-          price: price,
-          img: image,
-          color: color,
-          size: size,
-        },
-      });
-    };
     if (data.color.length > 0 && data.size.length > 0) {
       if (color === null && size === null) {
         setColor(data.color[0]);
@@ -48,10 +50,14 @@ const Product = (props) => {
       } else if (size === null) {
         setSize(data.size[0]);
       }
+      if (color === null || size === null) {
+        toast.warn("please check varients.");
+      } else if (color != null && size != null) {
+        handleDispatch(id, title, price, image, color, size);
+      }
     } else {
-      handleDispatch();
+      handleDispatch(id, title, price, image, color, size);
     }
-    handleDispatch();
   };
 
   const getData = async (id) => {
