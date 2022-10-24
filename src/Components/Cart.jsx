@@ -52,7 +52,7 @@ const Cart = () => {
       <p className="text-3xl text-center border-b py-2 text-secondary">Cart</p>
       <div>
         {product.length > 0 ? (
-          product.map((item , index) => {
+          product.map((item, index) => {
             return (
               <div
                 key={index}
@@ -66,15 +66,17 @@ const Cart = () => {
                   <p className="my-1 text-xl text-success font-bold">
                     ₹ {item.price}
                   </p>
-                  <div className="w-16 flex justify-between">
-                    {item.color !=  null && (
+                  <div className="w-36 flex justify-evenly items-center">
+                    {item.color != null && (
                       <button
                         style={{ backgroundColor: item.color }}
                         className="w-6 h-6 rounded-full border-2"
                       ></button>
                     )}
                     {item.size != null && (
-                      <p className="text-xl text-gray-800">{item.size}</p>
+                      <button className="text-xl border-2 rounded-md px-1">
+                        {item.size}
+                      </button>
                     )}
                   </div>
                   <div className="flex w-28 items-center justify-between text-xl my-2 border">
@@ -123,9 +125,7 @@ const Cart = () => {
               <span>₹ {Math.floor(state.subTotal)}</span>
             </p>
             <div className="flex w-40 justify-between items-center">
-              <Link
-                to={"/checkout"}
-              >
+              <Link to={"/checkout"}>
                 <button className="btn btn-secondary">Checkout</button>
               </Link>
               <MdDeleteForever

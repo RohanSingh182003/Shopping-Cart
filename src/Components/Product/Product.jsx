@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import AppContext from "../../../Context/AppContext";
 import Check_Servicebility from "./Check_Servicebility";
+import Color from "./Color";
+import Size from "./Size";
 
 const Product = (props) => {
   const { state, dispatch } = useContext(AppContext);
@@ -95,7 +97,7 @@ const Product = (props) => {
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container px-5 py-8 mx-auto">
+      <div className="container px-5 py-8 md:py-16 mx-auto">
         <div className="mx-auto flex flex-wrap">
           <div className="lg:w-1/2 w-full flex justify-center items-center lg:h-96 h-64 object-cover object-center rounded">
             <img alt="ecommerce" className="h-full rounded" src={data.image} />
@@ -113,37 +115,24 @@ const Product = (props) => {
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
               {data.color?.length > 0 && (
                 <div className="flex">
+                  {/* select color section */}
                   {data.color && <span className="mr-3">Colors</span>}
                   {data.color &&
                     data.color.map((item) => {
                       return (
-                        <button
-                          key={item}
-                          onClick={() => {
-                            setColor(item);
-                          }}
-                          style={{ backgroundColor: item }}
-                          className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none focus:ring-pink-200 focus:border-secondary"
-                        ></button>
+                        <Color item={item} setColor={setColor} color={color}/>
                       );
                     })}
                 </div>
               )}
+              {/* select size section */}
               {data.size?.length > 0 && (
                 <div className="flex items-center ml-6">
                   {data.size && <span className="mr-3">Sizes</span>}
                   {data.size &&
                     data.size.map((item) => {
                       return (
-                        <button
-                          key={item}
-                          onClick={() => {
-                            setSize(item);
-                          }}
-                          className="border-2 border-gray-300 rounded-md w-10 h-6 focus:outline-none focus:ring-pink-200 focus:border-secondary"
-                        >
-                          {item}
-                        </button>
+                        <Size item={item} size={size} setSize={setSize}/>
                       );
                     })}
                 </div>

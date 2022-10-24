@@ -6,7 +6,7 @@ const LoginComponent = () => {
   return (
     <div>
         {/* <button className='px-2 py-1 border text-white rounded-md'>Login</button> */}
-        <BiUserCircle className="text-4xl text-violet-50 cursor-pointer" />
+        <BiUserCircle title='user' className="text-4xl text-violet-50 cursor-pointer" />
     </div>
   )
 }
