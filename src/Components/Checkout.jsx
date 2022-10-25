@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import AppContext from '../../Context/AppContext';
 
 
-const Checkout = (props) => {
+const Checkout = () => {
 
     const { state, dispatch } = useContext(AppContext);
     const [product, setProduct] = useState([]);
@@ -38,9 +38,7 @@ const Checkout = (props) => {
       };
     
       useEffect(() => {
-        props.data(30)
         setProduct(state.cart);
-        props.data(100)
       }, [key]);
   
 

@@ -26,7 +26,7 @@ const Navbar = () => {
           to="/"
           className="text-center text-2xl text-white font-semibold mx-2"
         >
-          <button>Ecommerce</button>
+          <button onClick={() => setToggle(false)}>Ecommerce</button>
         </Link>
         {/* cart */}
         <Link onClick={() => setToggle(false)} to="/cart">

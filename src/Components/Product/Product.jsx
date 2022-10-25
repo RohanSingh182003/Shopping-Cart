@@ -7,7 +7,7 @@ import Check_Servicebility from "./Check_Servicebility";
 import Color from "./Color";
 import Size from "./Size";
 
-const Product = (props) => {
+const Product = () => {
   const { state, dispatch } = useContext(AppContext);
   const [data, setData] = useState({});
   const [color, setColor] = useState(null);
@@ -82,13 +82,11 @@ const Product = (props) => {
   };
 
   const getData = async (id) => {
-    props.data(30);
     let res = await axios.get(
       "https://rohansingh182003.github.io/JSON-files-for-rapid-development/store_api.json"
     );
     let prod = res.data.filter((item) => item.id === Number.parseInt(id));
     setData(prod[0]);
-    props.data(100);
   };
 
   useEffect(() => {
@@ -118,9 +116,9 @@ const Product = (props) => {
                   {/* select color section */}
                   {data.color && <span className="mr-3">Colors</span>}
                   {data.color &&
-                    data.color.map((item) => {
+                    data.color.map((item , inded) => {
                       return (
-                        <Color item={item} setColor={setColor} color={color}/>
+                        <Color key={inded} item={item} setColor={setColor} color={color}/>
                       );
                     })}
                 </div>
@@ -130,9 +128,9 @@ const Product = (props) => {
                 <div className="flex items-center ml-6">
                   {data.size && <span className="mr-3">Sizes</span>}
                   {data.size &&
-                    data.size.map((item) => {
+                    data.size.map((item , inded) => {
                       return (
-                        <Size item={item} size={size} setSize={setSize}/>
+                        <Size key={inded} item={item} size={size} setSize={setSize}/>
                       );
                     })}
                 </div>

@@ -17,20 +17,13 @@ function App() {
   return (
     <BrowserRouter>
       <AppState>
-      <LoadingBar
-        color='D426BD'
-        progress={progress}
-        height={2}
-        transitionTime={100}
-        loaderSpeed={300}
-      />
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Home data={loadProgress} />} />
+          <Route exact path="/" element={<Home />} />
           <Route exact path="/cart" element={<Cart />} />
-          <Route exact path="/checkout" element={<Checkout data={loadProgress} />} />
-          <Route exact path="/:category" element={<Catagory data={loadProgress} />} />
-          <Route exact path="/product/:id" element={<Product data={loadProgress} />} />
+          <Route exact path="/checkout" element={<Checkout />} />
+          <Route exact path="/:category" element={<Catagory />} />
+          <Route exact path="/product/:id" element={<Product />} />
         </Routes>
       </AppState>
     </BrowserRouter>

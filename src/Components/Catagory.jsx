@@ -4,18 +4,16 @@ import { useParams } from "react-router-dom";
 import Card from "./Card";
 import Loading from "./Loading";
 
-const Catagory = (props) => {
+const Catagory = () => {
   const [data, setData] = useState();
   let prod = useParams();
   const getData = async () => {
-    props.data(20);
     let a = await axios.get(
       "https://rohansingh182003.github.io/JSON-files-for-rapid-development/store_api.json"
     );
     let b = await a.data;
     let newarr = await b.filter((e) => e.category === prod.category);
     setData(newarr);
-    props.data(100);
   };
   // load initial data
   useEffect(() => {
