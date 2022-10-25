@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import LoadingBar from 'react-top-loading-bar'
 import AppState from "../Context/AppState";
 import Home from "./Components/Home/Home";
 import Navbar from "./Components/Navbar/Navbar";
