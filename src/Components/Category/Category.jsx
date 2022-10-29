@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Card from "./Card";
-import Loading from "./Loading";
+import Card from "../Card";
+import Loading from "../Loading";
+import Filter from "./Filter";
 
 const Catagory = () => {
   const [data, setData] = useState();
@@ -26,8 +27,12 @@ const Catagory = () => {
         Category :{" "}
         <span className="font-semibold capitalize text-gray-900"> {prod.category}</span>
       </p>
+      <div className="grid md:grid-cols-5 px-8">
+        {/* filter component */}
+          <Filter/>
+        {/* products */}
       {data ? (
-        <div className="flex flex-wrap justify-evenly md:mx-16 lg:px-6">
+        <div className="flex flex-wrap justify-evenly lg:px-6 col-span-4">
           {data.map((item) => {
             return (
               <Card
@@ -44,8 +49,9 @@ const Catagory = () => {
           })}
         </div>
       ) : (
-        <Loading />
+        <Loading/>
       )}
+      </div>
     </>
   );
 };

@@ -9,15 +9,13 @@ const Card = ({props}) => {
       
     const {state , dispatch} = useContext(AppContext)
   return (
-    <Link to={`/product/${id}`} key={id} className='w-48 border p-2 my-4 rounded-md overflow-x-hidden'>
+    <Link to={`/product/${id}`} key={id} className='w-48 border p-2 my-4 rounded-md overflow-hidden h-80'>
                     <div className='w-48 h-44 flex justify-center py-2'>
                     <img src={image} className="h-full object-cover" />
                     </div>
-                    <div className='flex flex-col'>
-                    <div className='h-24 overflow-hidden'>
+                    <div className='flex flex-col justify-evenly h-32'>
                     <p className='text-lg text-center border-t'>{title.slice(0,30)+'...'}</p>
                     <p className='text-right mx-2 font-semibold text-green-600'>₹ {price}</p>
-                    </div>
                     <div className='flex flex-wrap items-center justify-between'>
                        {color.length > 0 &&  <div className='flex -space-x-2'>
                             {color.map((item)=>{ return <button style={{backgroundColor: item}} className="h-6 w-6 rounded-full border-2"></button>})}

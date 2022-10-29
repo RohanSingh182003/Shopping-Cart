@@ -4,7 +4,6 @@ import { AiOutlineShoppingCart, AiOutlineClose } from "react-icons/ai";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import SearchComponent from "./SearchComponent";
-import FilterComponent from "./FilterComponent";
 import OrdersComponent from "./OrdersComponent";
 import BeASellorComponent from "./BeASellorComponent";
 import LoginComponent from "./LoginComponent";
@@ -44,7 +43,6 @@ const Navbar = () => {
         <div className="bg-white">
           <div className="flex flex-col md:flex-row items-center w-full justify-evenly bg-secondary">
             <div className="flex justify-evenly items-center mt-2 md:mt-0 w-full">
-              <FilterComponent />
               <BeASellorComponent />
               <OrdersComponent />
             </div>

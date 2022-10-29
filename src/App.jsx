@@ -4,15 +4,11 @@ import Home from "./Components/Home/Home";
 import Navbar from "./Components/Navbar/Navbar";
 import Cart from "./Components/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Catagory from "./Components/Catagory";
+import Catagory from "./Components/Category/Category";
 import Product from './Components/Product/Product';
 import Checkout from './Components/Checkout';
 
 function App() {
-  const loadProgress = (progress) => {
-    setProgress(progress)
-  }
-  const [progress, setProgress] = useState(0)
   return (
     <BrowserRouter>
       <AppState>
