@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Catagory from "./Components/Category/Category";
 import Product from './Components/Product/Product';
 import Checkout from './Components/Checkout';
+import PageNotFound from './Components/PageNotFound';
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/checkout" element={<Checkout />} />
-          <Route exact path="/:category" element={<Catagory />} />
+          <Route exact path="/category/:category" element={<Catagory />} />
           <Route exact path="/product/:id" element={<Product />} />
+          <Route exact path="*" element={<PageNotFound />} />
         </Routes>
       </AppState>
     </BrowserRouter>

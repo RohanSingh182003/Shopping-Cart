@@ -61,28 +61,28 @@ const Navbar = () => {
             </Link>
             <Link
               onClick={() => setToggle(false)}
-              to={`/men's clothing`}
+              to={`/category/men's clothing`}
               className="cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
             >
               Men's Fashion
             </Link>
             <Link
               onClick={() => setToggle(false)}
-              to={`/women's clothing`}
+              to={`/category/women's clothing`}
               className="cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
             >
               Women's Fashion
             </Link>
             <Link
               onClick={() => setToggle(false)}
-              to={"/electronics"}
+              to={"/category/electronics"}
               className="cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
             >
               Electronics
             </Link>
             <Link
               onClick={() => setToggle(false)}
-              to={"/jewelery"}
+              to={"/category/jewelery"}
               className="cursor-pointer text-xl hover:underline hover:underline-offset-2 md:text-sm lg:text-lg"
             >
               Jewelery
