@@ -29,7 +29,7 @@ const Catagory = () => {
       </p>
       <div className="grid md:grid-cols-5 px-8">
         {/* filter component */}
-          <Filter category={prod.category}/>
+          <Filter category={prod.category} data={data}/>
         {/* products */}
       {data ? (
         <div className="flex flex-wrap justify-evenly lg:px-6 col-span-4">
