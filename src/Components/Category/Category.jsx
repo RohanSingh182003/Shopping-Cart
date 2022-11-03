@@ -27,12 +27,12 @@ const Catagory = () => {
         Category :{" "}
         <span className="font-semibold capitalize text-gray-900"> {prod.category}</span>
       </p>
-      <div className="grid md:grid-cols-5 px-8">
+      <div className="flex px-8">
         {/* filter component */}
           <Filter category={prod.category} data={data}/>
         {/* products */}
       {data ? (
-        <div className="flex flex-wrap justify-evenly lg:px-6 col-span-4">
+        <div className="flex flex-wrap justify-evenly lg:px-6 w-full">
           {data.map((item) => {
             return (
               <Card

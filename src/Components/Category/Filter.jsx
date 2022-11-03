@@ -36,7 +36,7 @@ const Filter = ({category , data}) => {
   }
 
   return (
-    <div className="rounded-md p-4 bg-gradient-to-b from-pink-200 h-fit hidden md:block">
+    <div className="rounded-md p-4 bg-gradient-to-b from-pink-200 h-fit hidden md:block w-64">
       <h4 className="text-xl text-center pb-2 ">Select Filters</h4>
       <div className="flex flex-col h-full justify-evenly">
         {/* filter by price */}
@@ -58,8 +58,6 @@ const Filter = ({category , data}) => {
           })}
         </div>
         {/* filter by size */}
-
-        {/* men's and women's clothing  */}
         <div className="form-control w-full pb-2  flex flex-row flex-wrap justify-evenly">
           {data!= undefined && getSizeData().map((item)=>{
             return <SizeFilter size={item}/>
