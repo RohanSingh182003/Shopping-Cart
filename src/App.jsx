@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import AppState from "../Context/AppState";
 import Home from "./Components/Home/Home";
 import Navbar from "./Components/Navbar/Navbar";
@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/checkout" element={<Checkout />} />
           <Route exact path="/category/:category" element={<Catagory />} />
           <Route exact path="/product/:id" element={<Product />} />
-          <Route exact path="*" element={<PageNotFound />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AppState>
     </BrowserRouter>

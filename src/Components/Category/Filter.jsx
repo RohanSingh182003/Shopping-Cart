@@ -6,12 +6,8 @@ import SizeFilter from "./SizeFilter";
 
 const Filter = ({category , data}) => {
   // variants
-  // const [color, setColor] = useState([])
-  // const [clothingSize, setClothingSize] = useState([])
   let price = [500 , 1000 , 2000 , 5000]
   let rating = [3,4]
-  let clothingSize =['XL'];
-  let color = ['red']
 
   // returns unique data
   const getUniqueData = (arr) => {
@@ -26,7 +22,7 @@ const Filter = ({category , data}) => {
       allColors.push(...element.color)
     });
     let uniqueColors =  getUniqueData(allColors)
-    console.log(uniqueColors)
+    return uniqueColors;
   }
 
   // returns all unique size
@@ -36,16 +32,9 @@ const Filter = ({category , data}) => {
       allSizes.push(...element.size)
     });
     let uniqueSizes =  getUniqueData(allSizes)
-    console.log(uniqueSizes)
+    return uniqueSizes;
   }
 
-  if (data!=undefined) {  
-    useEffect(() => {
-    getColorData()
-    getSizeData()
-  }, [data])
-  }
-  
   return (
     <div className="rounded-md p-4 bg-gradient-to-b from-pink-200 h-fit hidden md:block">
       <h4 className="text-xl text-center pb-2 ">Select Filters</h4>
@@ -64,7 +53,7 @@ const Filter = ({category , data}) => {
         </div>
         {/* filter by colors */}
         <div className="form-control w-full pb-2  flex flex-row flex-wrap justify-evenly">
-          {category != 'jewelery' && color.map((item)=>{
+          {data!= undefined && getColorData().map((item)=>{
             return <ColorFilter color={item}/>
           })}
         </div>
@@ -72,7 +61,7 @@ const Filter = ({category , data}) => {
 
         {/* men's and women's clothing  */}
         <div className="form-control w-full pb-2  flex flex-row flex-wrap justify-evenly">
-          {(category === "men's clothing" || category === "women's clothing") && clothingSize.map((item)=>{
+          {data!= undefined && getSizeData().map((item)=>{
             return <SizeFilter size={item}/>
           })}
         </div>
