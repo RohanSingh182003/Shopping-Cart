@@ -6,6 +6,11 @@ import Loading from "../Loading";
 import Filter from "./Filter";
 
 const Catagory = () => {
+  // state variables to get variants of filter
+  const [prodPrice, setProdPrice] = useState(null)
+  const [prodRating, setProdRating] = useState(null)
+  const [prodColor, setProdColor] = useState(null)
+  const [prodSize, setProdSize] = useState(null)
   const [data, setData] = useState();
   let prod = useParams();
   const getData = async () => {

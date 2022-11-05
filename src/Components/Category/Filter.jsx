@@ -11,7 +11,7 @@ const Filter = ({category , data}) => {
 
   // returns unique data
   const getUniqueData = (arr) => {
-    const data = arr.reduce((acc,item)=> acc.add(item),new Set())
+    const data = new Set(arr)
     return ([...data])
   }
 
